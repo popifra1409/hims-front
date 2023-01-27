@@ -25,7 +25,7 @@ const SideBar = () => {
                         <li ><Link to="/dashboard" className="nav-link"><BsFillHouseFill className='nav-link-icons' />Tableau de bord</Link></li>
                         {/* module caption */}
                         <div className="nav-caption fw-light mt-0">Pris en charge du patient</div>
-                        <li ><Link to="/dashboard/test" className="nav-link"><BsPeopleFill className='nav-link-icons' />Patients</Link></li>
+                        <li ><Link to="/dashboard/patients" className="nav-link"><BsPeopleFill className='nav-link-icons' />Patients</Link></li>
                         <div className="nav-caption fw-light mt-0">Configuration</div>
                         <li ><Link to="/dashboard/parametres" className="nav-link"><BsFillGearFill className='nav-link-icons' />Paramètres</Link></li>
                         <li ><Link to="/dashboard/tiersPayeurs" className="nav-link"><BsWalletFill className='nav-link-icons' />Tiers payeurs</Link></li>

@@ -11,6 +11,7 @@ import Chambres from "./views/dashboard/pages/Chambres";
 import Agents from "./views/dashboard/pages/Agents";
 import Documentation from "./views/dashboard/pages/Documentation";
 import Login from './views/auth/Login';
+import Patients from './views/dashboard/pages/Patients';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='chambres' element={<Chambres />} />
           <Route path='agents' element={<Agents />} />
           <Route path='documentation' element={<Documentation />} />
+          <Route path='patients' element={<Patients />} />
         </Route>
         <Route path='/' element={<Login/>} />
         <Route path="*" element={<NoPage />} />

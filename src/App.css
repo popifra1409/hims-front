@@ -48,11 +48,39 @@
 }
 
 .main-content {
-  padding: 5px 0;
-  margin: 50px auto;
+  padding: 35px 10px 50px 10px;
+  margin: 10px auto;
   width: 100%;
   text-align: center;
   overflow: hidden;
+}
+
+.main-content-child {
+  margin-top: 30px;
+  padding: 16px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: -5px 5px 15px rgb(226, 225, 225), 5px 5px 15px rgb(226, 223, 223);
+}
+
+.main-content-child>div {
+  margin: 10px 0;
+}
+
+.main-content-child>div>h1.left-0 {
+  margin-left: -130px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.vertical-bar {
+  position: absolute;
+  width: 1px;
+  height: 300px;
+  left: 320px;
+  top: 240px;
+  opacity: 0.1;
+  background-color: black;
 }
 
 .sidebarArea {
@@ -64,6 +92,16 @@
   position: fixed;
   overflow: hidden auto;
   left: 0;
+}
+
+.prev-form {
+  position: absolute;
+  left: 0;
+}
+
+.next-form {
+  position: absolute;
+  right: 0;
 }
 
 .cursor-pointer {
@@ -171,12 +209,16 @@
 }
 
 
-.no-page h3,.register h3 , .login h3{
+.no-page h3,
+.register h3,
+.login h3 {
   margin: 155px auto;
   text-align: center;
 }
 
-.no-page h1, .register h1, .login h1 {
+.no-page h1,
+.register h1,
+.login h1 {
   text-align: center;
   position: absolute;
   top: 100px;
@@ -191,13 +233,14 @@
   bottom: 0;
   text-align: center;
   width: 80%;
-  position: fixed;
+  /* position: fixed; */
   color: black;
   /* background-color: aquamarine; */
 }
 
 .nav-heading {
   /* padding-right:40px; */
+  margin-top: 0px;
   justify-content: space;
   opacity: .66;
 }

@@ -6,7 +6,7 @@ const Main = (props) => {
         < div className="main-block" >
             <div className="main-content">
                 {/* main content */}
-                <main className='border border-primary'>
+                <main className=''>
                     {props.children}
                 </main>
             </div>
