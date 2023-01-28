@@ -57,7 +57,8 @@
 
 .main-content-child {
   margin-top: 30px;
-  padding: 16px;
+  padding: 16px 0;
+  padding-left:50px;
   background: white;
   border-radius: 5px;
   box-shadow: -5px 5px 15px rgb(226, 225, 225), 5px 5px 15px rgb(226, 223, 223);
@@ -77,7 +78,7 @@
   position: absolute;
   width: 1px;
   height: 300px;
-  left: 320px;
+  left: 350px;
   top: 240px;
   opacity: 0.1;
   background-color: black;
@@ -245,8 +246,14 @@
   opacity: .66;
 }
 
+.paginator {
+  margin-left: -2px;
+}
 
-
+.search-addPatient {
+  margin-left: 480px;
+  padding: 5px;
+}
 
 /* .dashboard {
   display: flex;
