@@ -1,4 +1,4 @@
-import PageHeading from "../components/PageHeading"
+import PageHeading from "../components/main/PageHeading"
 import Dashboard from "../Dashboard"
 import Main from "../layout/Main"
 

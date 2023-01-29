@@ -1,7 +1,7 @@
 import Dashboard from "../Dashboard"
 import Main from "../layout/Main"
-import PageHeading from "../components/PageHeading"
-import PatientsTable from "../components/PatientsTable"
+import PageHeading from "../components/main/PageHeading"
+import PatientsTable from "../components/patient/PatientsTable"
 
 const Patients = () => {
     return (

@@ -14,13 +14,13 @@ const PatientPersonalInfo = () => {
         <div className="col-md-6">
           <div className="row">
             <label className="col-4" for="name">Né(e) le</label>
-            <input className="col-6 " type="date" name="name" />
+            <input className="col-6 " type="date" name="birthDate" />
           </div>
         </div>
         <div className="col-md-6">
           <div className="row">
             <label className="col-2" for="name">A </label>
-            <input className="col-10" type="text" name="name" />
+            <input className="col-10" type="text" name="birthPlace" />
           </div>
         </div>
 
