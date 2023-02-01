@@ -1,6 +1,29 @@
-import {Link} from 'react-router-dom'
-import {BsThreeDotsVertical} from 'react-icons/bs'
+import { Link } from 'react-router-dom'
+import { BsAppIndicator, BsThreeDotsVertical } from 'react-icons/bs'
+import { useEffect, useRef, useState } from 'react'
+import RestApi from '../../../../services/RestApi'
+
 const PatientsTable = () => {
+
+    const [patients, setPatients] = useState([])
+
+    useEffect(() => {
+
+        async function getAllPatients() {
+
+            const api = new RestApi();
+            const res = await api.getAllPatients().then(res => setPatients(res.data.data))
+            //charger les données
+            return res
+        }
+
+        // Invocation de la fonction
+        // fetchData()
+        getAllPatients()
+        console.log(patients)
+    }, [])
+
+
     return (
         <div className="main-content-child">
             <div className="d-flex justify-between ">
@@ -13,7 +36,7 @@ const PatientsTable = () => {
                             <option value="15" >15</option>
                             <option value="20">20</option>
                         </select>
-                        <span className="ms-2">entries</span>
+                        <span className="ms-2" >entries</span>
                     </div>
                 </div>
                 <div className="d-flex justify-between search-addPatient">
@@ -38,15 +61,21 @@ const PatientsTable = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style={{opacity:'0.8'}}>
-                            <td>ryle</td>
-                            <td>nathan</td>
-                            <td>full stack dev</td>
-                            <td>cameroon</td>
-                            <td>nath@gmail.com</td>
-                            <td>Masculin</td>
+                        {
+                            patients.map(
+                         (p) => (
+                            <tr key={p.id} style={{ opacity: '0.8' }}>
+                            <td>{p.patientFirstName}</td>
+                            <td>{p.patientLastName}</td>
+                            <td>{p.patientProfession}</td>
+                            <td>{p.patientNationalite}</td>
+                            <td>{p.patientBarCode}</td>
+                            <td>{p.patientSex}</td>
                             <td><BsThreeDotsVertical /></td>
                         </tr>
+                         )
+                        )
+                        }
                     </tbody>
                 </table>
             </div>
