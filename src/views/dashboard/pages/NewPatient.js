@@ -6,10 +6,21 @@ import PageHeading from "../components/main/PageHeading"
 import PriseEnCharge from "../components/patient/PriseEnCharge"
 import PatientImgUpload from "../components/patient/PatientImgUpload"
 import { FaPlusCircle } from 'react-icons/fa'
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import RestApi from "../../../services/RestApi"
 
 const NewPatient = () => {
     const [step, setStep] = useState(1)
+
+     function addInput (inputs) {
+        const api = new RestApi()
+
+        console.log(inputs)
+
+      return  api.savePatient(inputs)
+    }
+
+
     const Btn = () => {
         if (step < 4) {
             return (
@@ -62,7 +73,7 @@ const NewPatient = () => {
                                 <form>
                                     {/* personal infor */}
                                     <div style={{ display: step === 1 ? '' : 'none' }} >
-                                        <PatientPersonalInfo />
+                                        <PatientPersonalInfo onAdd={addInput} />
                                     </div>
 
                                     {/* addresse et contact */}

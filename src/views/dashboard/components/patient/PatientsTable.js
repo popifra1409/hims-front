@@ -2,41 +2,68 @@ import { Link } from 'react-router-dom'
 import { BsAppIndicator, BsThreeDotsVertical } from 'react-icons/bs'
 import { useEffect, useRef, useState } from 'react'
 import RestApi from '../../../../services/RestApi'
+import axios from 'axios'
 
 const PatientsTable = () => {
 
     const [patients, setPatients] = useState([])
 
+
+    async function getAllPatients() {
+        const api = new RestApi();
+        const res = await api.getAllPatients().then((res) => setPatients(res.data.data))
+        //charger les données
+       return res 
+    }
+
     useEffect(() => {
-
-        async function getAllPatients() {
-
-            const api = new RestApi();
-            const res = await api.getAllPatients().then(res => setPatients(res.data.data))
-            //charger les données
-            return res
-        }
-
         // Invocation de la fonction
         // fetchData()
         getAllPatients()
         console.log(patients)
     }, [])
 
+    const Patients = () => {
+        if (patients.length === 0) {
+            return (
+                <td className=''>Pas de patients</td>
+            )
+        }
+        else {
+            return (
+                <tbody>
+                    {patients.map(
+                        (p) => (
+                            <tr key={p.patientId} style={{ opacity: '0.8' }}>
+                                <td>{p.patientFirstName}</td>
+                                <td>{p.patientLastName}</td>
+                                <td>{p.patientProfession}</td>
+                                <td>{p.patientNationalite}</td>
+                                <td>{p.email}</td>
+                                <td>{p.patientSex}</td>
+                                <td><BsThreeDotsVertical /></td>
+                            </tr>
+                        )
+                    )
+                    }
+                </tbody>
+            )
+        }
+    }
 
     return (
         <div className="main-content-child">
             <div className="d-flex justify-between ">
                 <div className="">
                     <div className="paginator">
-                        <span className="me-2">Show</span>
+                        <span className="me-1">Show</span>
                         <select name='paginate' className='p-1 border rounded'>
                             <option value="5" >5</option>
                             <option value="10">10</option>
                             <option value="15" >15</option>
                             <option value="20">20</option>
                         </select>
-                        <span className="ms-2" >entries</span>
+                        <span className="ms-1" >entries</span>
                     </div>
                 </div>
                 <div className="d-flex justify-between search-addPatient">
@@ -47,7 +74,7 @@ const PatientsTable = () => {
                     <Link to="/dashboard/newPatient" className="ms-md-4 px-2 py-1 border-0 rounded bg-primary text-white text-decoration-none">Ajouter un patient</Link>
                 </div>
             </div>
-            <div className="mt-3 table-responsive">
+            <div className="mt-3 table-responsive" style={{marginLeft:'-13px'}}>
                 <table className="table">
                     <thead>
                         <tr className="table-light text-uppercase">
@@ -60,23 +87,9 @@ const PatientsTable = () => {
                             <th className="fw-normal">action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {
-                            patients.map(
-                         (p) => (
-                            <tr key={p.id} style={{ opacity: '0.8' }}>
-                            <td>{p.patientFirstName}</td>
-                            <td>{p.patientLastName}</td>
-                            <td>{p.patientProfession}</td>
-                            <td>{p.patientNationalite}</td>
-                            <td>{p.patientBarCode}</td>
-                            <td>{p.patientSex}</td>
-                            <td><BsThreeDotsVertical /></td>
-                        </tr>
-                         )
-                        )
-                        }
-                    </tbody>
+
+                    <Patients />
+
                 </table>
             </div>
         </div>

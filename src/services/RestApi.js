@@ -2,9 +2,14 @@ import http from "./axiosInstance";
 
 class RestApi {
 
-    // get all students
+    // Lister tout les patients
     getAllPatients = () => {
-        return http.get('hims/patients')
+        return http.get('/hims/patients')
+    }
+
+    // créer un nouveau patient
+    savePatient = (patient) => {
+        return http.post('/hims/patients/save',patient)
     }
 }
 
