@@ -10,9 +10,11 @@ import Batiments from "./views/dashboard/pages/Batiments";
 import Chambres from "./views/dashboard/pages/Chambres";
 import Agents from "./views/dashboard/pages/Agents";
 import Documentation from "./views/dashboard/pages/Documentation";
-import Login from './views/auth/Login';
 import NewPatient from './views/dashboard/pages/NewPatient';
 import Patients from './views/dashboard/pages/Patients';
+import Login from './views/auth/Login';
+import Register from './views/auth/Register';
+
 
 function App() {
   return (
@@ -30,9 +32,12 @@ function App() {
           <Route path='agents' element={<Agents />} />
           <Route path='documentation' element={<Documentation />} />
           <Route path='newPatient' element={<NewPatient />} />
-          <Route path='patients' element={<Patients/>} />
+          <Route path='patients' element={<Patients />} />
+
         </Route>
-        <Route path='/' element={<Login/>} />
+
+        <Route path='/' element={<Register />} />
+        <Route path='Login' element={<Login />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter >

@@ -1,13 +1,24 @@
-
- *{
-  margin: 0;
-  padding: 0;
-  
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.header {
+  margin-top: 90px;
+  text-align: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.formulaire {
+  margin-top: 30px;
+  border: 1px solid #fff;
+  height: 100%;
+  width: 360px;
+}
+
+.formulaire1 {
+
+  border: 1px solid #fff;
+  height: 70%;
+  width: 100%;
+}
+
+
+
+.formulaire a {
+  text-decoration: none;
 }

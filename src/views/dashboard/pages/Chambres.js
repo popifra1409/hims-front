@@ -5,10 +5,10 @@ import PageHeading from "../components/main/PageHeading"
 const Chambres = () => {
   return (
     <Dashboard>
-    <Main>
-      < PageHeading heading="Chambres" />
-    </Main>
-  </Dashboard>
+      <Main>
+        < PageHeading heading="Chambres -Nouveau" />
+      </Main>
+    </Dashboard>
   )
 }
 
