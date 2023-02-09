@@ -7,6 +7,7 @@ const Agents = () => {
     <Dashboard>
     <Main>
       < PageHeading heading="Agents" />
+
     </Main>
   </Dashboard>
   )
