@@ -84,21 +84,41 @@ const PatientPersonalInfo = ({ onAdd }) => {
 
   }
 
-  const calculateAge = () => {
+  // Calcule l'age
+  const computeAge = () => {
     let dob = new Date(patientBirthDayRef.current.value)
+    let dobString = patientBirthDayRef.current.value
+
     //calculate month difference from current date in time.
     var month_diff = Date.now() - dob.getTime();
     //convert the calculated difference in date format.
     var age_dt = new Date(month_diff);
     //extract year from date.
     var year = age_dt.getUTCFullYear();
+    var month = age_dt.getUTCFullYear()
+    var dd = age_dt.getDay()
+    var mm = age_dt.getMonth() + 1
+    var yy = dob.getFullYear()
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
     age = Math.abs(year - 1970)
 
     setPatientBirthDay(age)
 
     patientAgeRef.current.value = age
-    console.log(patientAgeRef)
+    const f = dd + '/' + mm + '/' + yy
+    console.log(mm)
     // console.log()
+  }
+
+  const computeBirthDate = (value) => {
+
+    let age = value
+    let current_year = new Date().getFullYear()
+    let birth_year = current_year - value
+    console.log(birth_year)
   }
 
   return (
@@ -120,11 +140,11 @@ const PatientPersonalInfo = ({ onAdd }) => {
             <div className="col-md-12">
               <div className="col-md-12">
                 <label className="my-1 col-md-12 text-start" for="date_naissance">Date de naissance <i className="text-danger">*</i></label>
-                <input ref={patientBirthDayRef} className="form-control " type="date" name="date_naissance" onChange={calculateAge} />
+                <input ref={patientBirthDayRef} className="form-control " type="date" name="date_naissance" onChange={computeAge} />
               </div>
               <div className="col-md-12">
                 <label className="my-1 col-md-12 text-start" for="age">Age <i className="text-danger">*</i></label>
-                <input disabled ref={patientAgeRef} className="form-control" type="number" name="age" onChange={(e) => setPatientAge(e.target.value)} />
+                <input ref={patientAgeRef} className="form-control" type="number" name="age" onChange={(e) => computeBirthDate(e.target.value)} />
               </div>
             </div>
           </div>
@@ -187,7 +207,7 @@ const PatientPersonalInfo = ({ onAdd }) => {
       </div>
       <div className="border p-3">
         <div className="mb-3 text-end">
-          <button className="mb-3 p-1 text-wrap btn btn-primary" style={{width: '6rem'}}><FaPlus className="me-2" />Ajouter</button>
+          <button className="mb-3 p-1 text-wrap btn btn-primary" style={{ width: '6rem' }}><FaPlus className="me-2" />Ajouter</button>
         </div>
         <table className="table">
           <thead className="table-light text-uppercase">
@@ -211,7 +231,7 @@ const PatientPersonalInfo = ({ onAdd }) => {
       </div>
 
       <div className="mt-3 me-3 ">
-        <button onClick={OnSubmit} className="btn btn-success px-0 text-wrap rounded text-white" type="button" style={{width: '6rem'}}>Enregistrer<AiOutlineSave /></button>
+        <button onClick={OnSubmit} className="btn btn-success px-0 text-wrap rounded text-white" type="button" style={{ width: '6rem' }}>Enregistrer<AiOutlineSave /></button>
       </div>
     </>
   )

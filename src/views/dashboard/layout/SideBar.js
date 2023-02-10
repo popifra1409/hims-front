@@ -1,4 +1,4 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BsFillGearFill } from 'react-icons/bs'
 import { BsPeopleFill } from 'react-icons/bs'
 import { BsFillHouseFill } from 'react-icons/bs'
@@ -23,10 +23,10 @@ const SideBar = ({collapseSideBar}) => {
                         <div className="nav-caption fw-light mt-4">Accueil</div>
                         <li ><Link to="/dashboard" className="nav-link"><BsFillHouseFill className='nav-link-icons' />Tableau de bord</Link></li>
                         {/* module caption */}
-                        <div className="nav-caption fw-light mt-0">Pris en charge du patient</div>
+                        <div className="nav-caption fw-light mt-0">Acceuil et facturation</div>
                         <li ><Link to="/dashboard/patients" className="nav-link"><BsPeopleFill className='nav-link-icons' />Patients</Link></li>
-                        <div className="nav-caption fw-light mt-0">Configuration</div>
-                        <li ><Link to="/dashboard/parametres" className="nav-link"><BsFillGearFill className='nav-link-icons' />Paramètres</Link></li>
+                        <div className="nav-caption fw-light mt-0">Administration</div>
+                        <li ><Link to="/dashboard/parametres" className="nav-link"><BsFillGearFill className='nav-link-icons' />Paramétrages</Link></li>
                         <li ><Link to="/dashboard/tiersPayeurs" className="nav-link"><BsWalletFill className='nav-link-icons' />Tiers payeurs</Link></li>
                         <li ><Link to="/dashboard/batiments" className="nav-link"><BsHouseDoorFill className='nav-link-icons' />Batiments</Link></li>
                         <li ><Link to="/dashboard/chambres" className="nav-link"><BsFillDoorOpenFill className='nav-link-icons' />Chambres</Link></li>
