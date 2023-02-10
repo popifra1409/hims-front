@@ -56,6 +56,9 @@ const Register = () => {
                                     <a href='#' type='submit' className="btn btn-lg btn-ligth w-100 mb-5 fw-bold" style={{ background: '#ff5600', color: '#FFFFFF' }} >S'inscrire</a>
                                 </div>
                             </form>
+                            <div className='p-3 text-center'>
+                                Allez au  <Link className='text-wrap' to="/dashboard">dashboard</Link>
+                            </div>
 
                         </div>
 
