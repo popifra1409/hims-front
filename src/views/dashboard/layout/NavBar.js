@@ -1,12 +1,16 @@
 import { FaBars } from 'react-icons/fa'
 import { BiBell } from 'react-icons/bi'
-const NavBar = () => {
+import { useState } from 'react'
+const NavBar = ({ collapseSideBar }) => {
+    const setCollapseSideBar = () => {
+        collapseSideBar = !collapseSideBar
+    }
     return (
         //Navbar
         <nav className="navbar navbar-expand fixed-top-bar rounded">
             <div className='container-fluid'>
                 <div className="navbar-brand ">
-                    <button className="btn btn-light active"><FaBars /></button>
+                    <button onClick={() => setCollapseSideBar()} className="btn btn-light active"><FaBars /></button>
                 </div>
                 <div className='text-white  user-profil'>
                     <div className='notification-bell text-black'>
@@ -20,7 +24,7 @@ const NavBar = () => {
                         <h2>Administrator super</h2>
                         <p>super-admin</p>
                     </div>
-                    <span className='avatar mt-2 position-relative'><img  style={{width:'60px',height:'60px'}} className="rounded-circle position-absolute end-0 bottom-0 border-0" src={require('../../../images/profil.jpg')} alt="profil"/></span>
+                    <span className='avatar mt-2 position-relative'><img style={{ width: '60px', height: '60px' }} className="rounded-circle position-absolute end-0 bottom-0 border-0" src={require('../../../images/profil.jpg')} alt="profil" /></span>
                 </div>
             </div>
         </nav>
