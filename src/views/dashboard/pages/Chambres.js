@@ -13,8 +13,8 @@ const Chambres = () => {
               <section>
                 <div className="inp">
                   <label for="batiment">Batiment<span className="text-danger">*</span></label>
-                  <select className="form-control">
-                    <option disabled>faites votre choix</option>
+                  <select className="form-select">
+                    <option selected>faites votre choix</option>
                     <option>Batiment 1</option>
                     <option>Batiment 2</option>
                     <option>Batiment 3</option>

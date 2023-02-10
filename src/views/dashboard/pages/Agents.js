@@ -59,8 +59,8 @@ const Agents = () => {
 
                 <div className="sexe">
                   <label for="sexe">Sexe<span className="text-danger">*</span></label>
-                  <select className="form-control">
-                    <option disabled>faites votre choix</option>
+                  <select className="form-select">
+                    <option selected>faites votre choix</option>
                     <option>Masculin</option>
                     <option>Feminin</option>
 
