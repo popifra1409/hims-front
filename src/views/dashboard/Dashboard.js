@@ -7,8 +7,8 @@ const Dashboard = (props) => {
 
     return (
         <div className="pageWrapper">
-            <SideBar collapseSideBar = {collapseSideBar} />
-            <NavBar collapseSideBar={setCollapseSideBar(!collapseSideBar)} />
+            <SideBar />
+            <NavBar />
             {props.children}
         </div>
     );

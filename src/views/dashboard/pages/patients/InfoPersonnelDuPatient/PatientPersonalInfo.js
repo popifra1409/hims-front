@@ -1,10 +1,11 @@
 import { useState, useRef } from "react"
-import { BsPencilSquare} from 'react-icons/bs'
-import { FaTrash,FaPlus } from 'react-icons/fa'
+import { AiOutlineSave } from "react-icons/ai"
+import { BsPencilSquare } from 'react-icons/bs'
+import { FaTrash, FaPlus } from 'react-icons/fa'
 
 const PatientPersonalInfo = ({ onAdd }) => {
   const [patientAge, setPatientAge] = useState(0)
-  const [patientBirthDay, setPatientBirthDay] = useState()
+  const [patientBirthDay, setPatientBirthDay] = useState('')
   const [patientFirstName, setPatientFirstName] = useState('')
   const [patientLastName, setPatientLastName] = useState('')
   const [patientNationalite, setPatientNationalite] = useState('')
@@ -31,6 +32,7 @@ const PatientPersonalInfo = ({ onAdd }) => {
   const patientAdresseRef = useRef(null)
   const patientEmailRef = useRef(null)
   const patientCodeBarRef = useRef(null)
+  var age
 
   const OnSubmit = (e) => {
     e.preventDefault()
@@ -82,6 +84,23 @@ const PatientPersonalInfo = ({ onAdd }) => {
 
   }
 
+  const calculateAge = () => {
+    let dob = new Date(patientBirthDayRef.current.value)
+    //calculate month difference from current date in time.
+    var month_diff = Date.now() - dob.getTime();
+    //convert the calculated difference in date format.
+    var age_dt = new Date(month_diff);
+    //extract year from date.
+    var year = age_dt.getUTCFullYear();
+    age = Math.abs(year - 1970)
+
+    setPatientBirthDay(age)
+
+    patientAgeRef.current.value = age
+    console.log(patientAgeRef)
+    // console.log()
+  }
+
   return (
     <>
       <div className="my-3 col-md-12 text-start">
@@ -90,7 +109,7 @@ const PatientPersonalInfo = ({ onAdd }) => {
       <form className="border p-3">
         <div className="row mb-3">
           <div className="col-md-4">
-            <label className="col-md-12 text-start" for="nom">Nom *</label>
+            <label className="my-1 col-md-12 text-start" for="nom">Nom <i className="text-danger">*</i></label>
             <input ref={patientFirstNameRef} className="form-control" type="text" name="nom" onChange={(e) => setPatientFirstName(e.target.value)} />
           </div>
           <div className="col-md-4">
@@ -100,12 +119,12 @@ const PatientPersonalInfo = ({ onAdd }) => {
           <div className="col-md-4">
             <div className="col-md-12">
               <div className="col-md-12">
-                <label className="my-1 col-md-12 text-start" for="date_naissance">Date de naissance *</label>
-                <input ref={patientBirthDayRef} className="form-control " type="date" name="date_naissance" onChange={(e) => setPatientBirthDay(e.target.value)} />
+                <label className="my-1 col-md-12 text-start" for="date_naissance">Date de naissance <i className="text-danger">*</i></label>
+                <input ref={patientBirthDayRef} className="form-control " type="date" name="date_naissance" onChange={calculateAge} />
               </div>
               <div className="col-md-12">
-                <label className="my-1 col-md-12 text-start" for="age">Age *</label>
-                <input ref={patientAgeRef} className="form-control" type="number" name="age" onChange={(e) => setPatientAge(e.target.value)} />
+                <label className="my-1 col-md-12 text-start" for="age">Age <i className="text-danger">*</i></label>
+                <input disabled ref={patientAgeRef} className="form-control" type="number" name="age" onChange={(e) => setPatientAge(e.target.value)} />
               </div>
             </div>
           </div>
@@ -114,7 +133,7 @@ const PatientPersonalInfo = ({ onAdd }) => {
 
           <div className="col-md-4">
             <div className="col-md-12">
-              <label className="my-1 col-md-12 text-start" for="lieu_naissance">Lieu de naissance * </label>
+              <label className="my-1 col-md-12 text-start" for="lieu_naissance">Lieu de naissance <i className="text-danger">*</i></label>
               <input ref={patientPlaceOfBirthRef} className="form-control" type="text" name="lieu_naissance" onChange={(e) => setPatientPlaceOfBirth(e.target.value)} />
             </div>
           </div>
@@ -125,8 +144,8 @@ const PatientPersonalInfo = ({ onAdd }) => {
             </div>
           </div>
           <div className="col-md-4">
-            <label className="my-1 col-md-12 text-start" for="sexe">Sexe *</label>
-            <select ref={patientSexRef} className="p-2 col-md-12 rounded" name="sexe" onChange={(e) => setPatientSex(e.target.value)}>
+            <label className="my-1 col-md-12 text-start" for="sexe">Sexe <i className="text-danger">*</i></label>
+            <select ref={patientSexRef} className=" form-select" name="sexe" onChange={(e) => setPatientSex(e.target.value)}>
               <option value="">Choisir le genre </option>
               <option value="NON_PRECISE" >NON_PRECISE</option>
               <option value="MASCULIN" >Masculin</option>
@@ -136,11 +155,11 @@ const PatientPersonalInfo = ({ onAdd }) => {
         </div>
         <div className="row mb-3">
           <div className="col-md-4">
-            <label className="my-1 col-md-12 text-start" for="adresse">Adresse *</label>
+            <label className="my-1 col-md-12 text-start" for="adresse">Adresse <i className="text-danger">*</i></label>
             <input ref={patientAdresseRef} className="form-control" type="text" name="adresse" onChange={(e) => setAdresse(e.target.value)} />
           </div>
           <div className="col-md-4">
-            <label className="my-1 col-md-12 text-start" for="telephone">Téléphone *</label>
+            <label className="my-1 col-md-12 text-start" for="telephone">Téléphone <i className="text-danger">*</i></label>
             <input ref={patientTelephoneRef} className="form-control" type="tel" name="telephone" onChange={(e) => setTelephone(e.target.value)} />
           </div>
           <div className="col-md-4">
@@ -154,7 +173,7 @@ const PatientPersonalInfo = ({ onAdd }) => {
             <input ref={patientReligionRef} className="form-control" type="text" name="religion" onChange={(e) => setPatientReligion(e.target.value)} />
           </div>
           <div className="col-md-4 mb-2">
-            <label className="my-1 col-md-12 text-start" for="profession">Profession *</label>
+            <label className="my-1 col-md-12 text-start" for="profession">Profession <i className="text-danger">*</i></label>
             <input ref={patientProfessionRef} className="form-control" type="text" name="profession" onChange={(e) => setPatientProfession(e.target.value)} />
           </div>
           <div className="col-md-4">
@@ -162,14 +181,13 @@ const PatientPersonalInfo = ({ onAdd }) => {
             <input ref={patientEmailRef} className="form-control" type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
           </div>
         </div>
-        <input className="btn btn-primary" type="button" value="Submit" onClick={OnSubmit} />
       </form>
       <div className="my-3 col-md-12 text-start">
         <h5 className="fs-6">Infos supplémentaires</h5>
       </div>
       <div className="border p-3">
         <div className="mb-3 text-end">
-          <button className="btn btn-primary"><FaPlus className="me-2"/>Ajouter</button>
+          <button className="mb-3 p-1 text-wrap btn btn-primary" style={{width: '6rem'}}><FaPlus className="me-2" />Ajouter</button>
         </div>
         <table className="table">
           <thead className="table-light text-uppercase">
@@ -190,6 +208,10 @@ const PatientPersonalInfo = ({ onAdd }) => {
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div className="mt-3 me-3 ">
+        <button onClick={OnSubmit} className="btn btn-success px-0 text-wrap rounded text-white" type="button" style={{width: '6rem'}}>Enregistrer<AiOutlineSave /></button>
       </div>
     </>
   )
