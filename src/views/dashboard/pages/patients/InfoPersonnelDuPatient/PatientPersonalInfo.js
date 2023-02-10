@@ -1,7 +1,7 @@
 import { useState, useRef } from "react"
 import { AiOutlineSave } from "react-icons/ai"
-import { BsPencilSquare } from 'react-icons/bs'
-import { FaTrash, FaPlus } from 'react-icons/fa'
+import { BsCheck, BsPencilSquare } from 'react-icons/bs'
+import { FaTrash, FaPlus, FaTimes } from 'react-icons/fa'
 
 const PatientPersonalInfo = ({ onAdd }) => {
   const [patientAge, setPatientAge] = useState(0)
@@ -32,6 +32,8 @@ const PatientPersonalInfo = ({ onAdd }) => {
   const patientAdresseRef = useRef(null)
   const patientEmailRef = useRef(null)
   const patientCodeBarRef = useRef(null)
+  const BsCheckRef = useRef(null)
+  const BsTimesRef = useRef(null)
   var age
 
   const OnSubmit = (e) => {
@@ -40,6 +42,8 @@ const PatientPersonalInfo = ({ onAdd }) => {
     // clear field
     clearField()
   }
+
+  // console.log(  patientFirstNameRef)
 
   const clearField = () => {
     // Liberer les chants
@@ -84,6 +88,26 @@ const PatientPersonalInfo = ({ onAdd }) => {
 
   }
 
+  // mutateField
+  const toggleFieldState = () => {
+    let iconTimes = document.getElementById('times')
+    let iconCheck = document.getElementById('check')
+    let field = document.getElementById('dob')
+
+
+    // top: '35px', right: '3px', color: 'green', backgroundColor: 'white', fontSize: '33px' 
+    if (patientAgeRef.current.value === '') {
+      iconCheck.style.cssText = 'top: 35px; right: 3px; color: green; background-color: white; font-size: 33px;display:none '
+      field.style.cssText = 'border-color:red'
+      iconTimes.style.cssText = 'top: 35px; right: 3px; color: red; background-color: white; font-size: 33px;'
+    }
+    else {
+      iconCheck.style.cssText = 'top: 35px; right: 3px; color: green; background-color: white; font-size: 33px;'
+      field.style.cssText = 'border-color:green'
+      iconTimes.style.cssText = 'top: 35px; right: 3px; color: red; background-color: white; font-size: 33px;display:none '
+    }
+  }
+
   // Calcule l'age
   const computeAge = () => {
     let dob = new Date(patientBirthDayRef.current.value)
@@ -95,7 +119,6 @@ const PatientPersonalInfo = ({ onAdd }) => {
     var age_dt = new Date(month_diff);
     //extract year from date.
     var year = age_dt.getUTCFullYear();
-    var month = age_dt.getUTCFullYear()
     var dd = age_dt.getDay()
     var mm = age_dt.getMonth() + 1
     var yy = dob.getFullYear()
@@ -114,11 +137,22 @@ const PatientPersonalInfo = ({ onAdd }) => {
   }
 
   const computeBirthDate = (value) => {
-
-    let age = value
     let current_year = new Date().getFullYear()
+    let day = Math.round(Math.random(new Date().getDay()) * 30)
+    let month = Math.round(Math.random(new Date().getMonth()) * 12)
     let birth_year = current_year - value
-    console.log(birth_year)
+    let birth_date
+
+    if (day < 10) { day = '0' + day } else if (day < 0) { day++ }
+    if (month < 10) { month = '0' + month } else if (day < 0) { day++ }
+    birth_date = birth_year + '-' + month + '-' + day
+    console.log(birth_date)
+    // console.log(current_month)
+
+    patientBirthDayRef.current.value = birth_date
+
+    toggleFieldState()
+
   }
 
   return (
@@ -138,9 +172,11 @@ const PatientPersonalInfo = ({ onAdd }) => {
           </div>
           <div className="col-md-4">
             <div className="col-md-12">
-              <div className="col-md-12">
+              <div className="col-md-12 position-relative">
                 <label className="my-1 col-md-12 text-start" for="date_naissance">Date de naissance <i className="text-danger">*</i></label>
-                <input ref={patientBirthDayRef} className="form-control " type="date" name="date_naissance" onChange={computeAge} />
+                <input id="dob" disabled ref={patientBirthDayRef} className="form-control " type="date" name="date_naissance" style={{ borderColor: 'red' }} />
+                <BsCheck id="check" className="p-1 position-absolute" style={{ top: '35px', right: '3px', color: 'green', backgroundColor: 'white', fontSize: '33px' }} />
+                <FaTimes id="times" className="p-2 position-absolute" style={{ top: '35px', right: '3px', color: 'red', backgroundColor: 'white', fontSize: '33px' }} />
               </div>
               <div className="col-md-12">
                 <label className="my-1 col-md-12 text-start" for="age">Age <i className="text-danger">*</i></label>

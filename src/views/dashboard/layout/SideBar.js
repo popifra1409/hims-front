@@ -15,7 +15,7 @@ const SideBar = ({collapseSideBar}) => {
         <aside className={`sidebarArea ${collapseSideBar? 'd-none':''}` } >
             <div className=''>
                 <div className="text-center p-1 ">
-                    <h1 className="mt-1 p-4 fs-3 fst-italic fw-normal cursor-pointer border border-primary rounded">himasys</h1>
+                    <h1 className="mt-1 p-4 fs-3 fst-italic fw-normal cursor-pointer border border-primary rounded text-uppercase">himasys</h1>
                 </div>
                 <div style={{ marginTop: '30px' }}>
                     <ul className="nav-list">
