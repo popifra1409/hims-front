@@ -13,6 +13,14 @@ import Login from './views/auth/Login';
 import Register from './views/auth/Register';
 import CreatePatient from './views/dashboard/pages/patients/CreatePatient';
 import Patients from './views/dashboard/pages/patients/Patients';
+import Produit from './views/dashboard/pages/gestionProduits/Produit';
+import FamilleProduit from './views/dashboard/pages/gestionProduits/familleProduit';
+import ListeFamilleProduit from './views/dashboard/pages/gestionProduits/listeFamilleProduit';
+import CategorieProduit from './views/dashboard/pages/gestionProduits/categorieProduit';
+import ListeCategorieProduit from './views/dashboard/pages/gestionProduits/listeCategorieProduit';
+import ListeFournisseur from './views/dashboard/pages/gestionProduits/listeFournisseur';
+import Fournisseur from './views/dashboard/pages/gestionProduits/Fournisseur';
+import ListeProduit from './views/dashboard/pages/gestionProduits/listeProduit';
 import Patient from './views/dashboard/pages/patients/Patient';
 
 
@@ -24,6 +32,14 @@ function App() {
         {/* Dashboard  Route */}
         <Route path='/dashboard'>
           <Route index element={<Home />} />
+          <Route path='listeProduit' element={<ListeProduit />} />
+          <Route path='listeProduit/produit' element={<Produit />} />
+          <Route path='listeFamilleProduit' element={<ListeFamilleProduit />} />
+          <Route path='listeFamilleProduit/familleProduit' element={<FamilleProduit />} />
+          <Route path='listeCategorieProduit' element={<ListeCategorieProduit />} />
+          <Route path='listeCategorieProduit/categorieProduit' element={<CategorieProduit />} />
+          <Route path='listeFournisseur' element={<ListeFournisseur />} />
+          <Route path='listeFournisseur/fournisseur' element={<Fournisseur />} />
           <Route path='parametres' element={<Parametres />} />
           <Route path='tiersPayeurs' element={<TiersPayeurs />} />
           <Route path='lits' element={<Lits />} />

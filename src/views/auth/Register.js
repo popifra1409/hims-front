@@ -50,7 +50,7 @@ const Register = () => {
                                 </div><br></br>
                                 <div>
                                     <input type="checkbox" style={{ width: '50px' }} />
-                                    <label htmlfor="" className=' fw-bold'> J'accepte <span className='fs-bold' style={{ color: '#ff5600' }}>Termes et Conditions</span></label>
+                                    <label htmlfor="" className=' fw-bold '> J'accepte <span className='fs-bold' style={{ color: '#ff5600' }}>Termes et Conditions</span></label>
                                 </div><br></br>
                                 <div >
                                     <a href='#' type='submit' className="btn btn-lg btn-ligth w-100 mb-5 fw-bold" style={{ background: '#ff5600', color: '#FFFFFF' }} >S'inscrire</a>
