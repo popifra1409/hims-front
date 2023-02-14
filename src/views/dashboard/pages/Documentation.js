@@ -5,9 +5,9 @@ import PageHeading from "../components/main/PageHeading"
 const Documentation = () => {
   return (
     <Dashboard>
-    <Main>
+    {/* <Main> */}
       < PageHeading heading="Documentation" />
-    </Main>
+    {/* </Main> */}
   </Dashboard>
   )
 }

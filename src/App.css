@@ -39,6 +39,15 @@
   margin-bottom: 15px;
 }
 
+.test {
+  margin: 7px auto;
+  z-index: 1;
+  background-color: white;
+  box-shadow: -5px 2px 15px rgb(214, 212, 212), 5px 2px 15px rgb(214, 212, 212);
+  margin-bottom: 15px;
+}
+
+
 .main-block {
   /* min-height: 100vh; */
   left: 223px;
@@ -47,8 +56,16 @@
   overflow: hidden;
 }
 
+.expan {
+  left:24px;
+  width:96%;
+  background-color: rgb(243, 243, 243);
+  position: relative;
+  overflow: hidden;
+}
+
 .main-content {
-  padding: 35px 10px 50px 10px;
+  /* padding: 35px 10px 50px 10px; */
   margin: 10px auto;
   width: 100%;
   text-align: center;
@@ -254,5 +271,3 @@
   margin-left: 480px;
   padding: 5px;
 }
-
-

@@ -55,7 +55,7 @@ const Patient = () => {
 
   return (
     <Dashboard>
-      <Main>
+      {/* <Main> */}
         <PageHeading heading="Patients" stepName={showUpdateForm ? `${patient.patientId}/ Modifier` : patient.patientId} />
         <div className="main-content-child" style={{ display: showUpdateForm ? 'none' : '' }}>
           <div className="row mb-3">
@@ -215,7 +215,7 @@ const Patient = () => {
             </form>
           </UpdateForm>
         </div>
-      </Main>
+      {/* </Main> */}
     </Dashboard >
   )
 }

@@ -1,16 +1,18 @@
 import { FaBars } from 'react-icons/fa'
 import { BiBell } from 'react-icons/bi'
 import { useState } from 'react'
-const NavBar = ({ collapseSideBar }) => {
+const NavBar = ({onToggleSideBar }) => {
+    const [toggleSideBar,setToggleSideBar] = useState(false)
     const setCollapseSideBar = () => {
-        collapseSideBar = !collapseSideBar
+        setToggleSideBar(!toggleSideBar)
+        onToggleSideBar(!toggleSideBar)
     }
     return (
         //Navbar
-        <nav className="navbar navbar-expand fixed-top-bar rounded">
+        <nav className={`navbar navbar-expand ${toggleSideBar? 'test':'fixed-top-bar'} rounded`} style={{width:toggleSideBar?'98%':''}}>
             <div className='container-fluid'>
                 <div className="navbar-brand ">
-                    <button onClick={() => setCollapseSideBar()} className="btn btn-light active"><FaBars /></button>
+                    <button onClick={() => setCollapseSideBar()} className="btn btn-light active " style={{width:'3rem'}}><FaBars /></button>
                 </div>
                 <div className='text-white  user-profil'>
                     <div className='notification-bell text-black'>

@@ -5,7 +5,7 @@ import PageHeading from "../components/main/PageHeading"
 const Batiments = () => {
   return (
     <Dashboard>
-      <Main>
+      {/* <Main> */}
         < PageHeading heading="Batiments - Nouveau" />
 
         <div className="container">
@@ -32,7 +32,7 @@ const Batiments = () => {
 
         </div>
 
-      </Main>
+      {/* </Main> */}
     </Dashboard>
   )
 }

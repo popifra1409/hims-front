@@ -1,17 +1,19 @@
 import React from 'react'
 import About from './About'
 
-const Main = (props) => {
+const Main = (props, { toggle }) => {
     return (
-        < div className="main-block" >
-            <div className="main-content">
-                {/* main content */}
-                <main className=''>
-                    {props.children}
-                </main>
+        <>
+            < div className={`main-block ${toggle ? 'expand' : ''}`} >
+                <div className="main-content">
+                    {/* main content */}
+                    <main className=''>
+                        {props.children}
+                    </main>
+                </div>
+                <About />
             </div>
-            <About/>
-        </div>
+        </>
     )
 }
 

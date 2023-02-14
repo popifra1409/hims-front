@@ -5,9 +5,9 @@ import Main from "../layout/Main"
 const TiersPayeurs = () => {
   return (
     <Dashboard>
-      <Main>
+      {/* <Main> */}
         <PageHeading heading="Tiers Payeurs"/>
-      </Main>
+      {/* </Main> */}
     </Dashboard>
   )
 }

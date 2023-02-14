@@ -5,7 +5,7 @@ import PageHeading from "../components/main/PageHeading"
 const Chambres = () => {
   return (
     <Dashboard>
-      <Main>
+      {/* <Main> */}
         < PageHeading heading="Chambres - Nouveau" />
         <div className="container">
           <div className="row">
@@ -48,7 +48,7 @@ const Chambres = () => {
         </div>
 
 
-      </Main>
+      {/* </Main> */}
     </Dashboard>
   )
 }

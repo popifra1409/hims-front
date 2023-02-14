@@ -5,7 +5,7 @@ import PageHeading from "../components/main/PageHeading"
 const Agents = () => {
   return (
     <Dashboard>
-      <Main>
+      {/* <Main> */}
         < PageHeading heading="Agents" />
 
         <div className="containers">
@@ -87,7 +87,7 @@ const Agents = () => {
         </div>
 
 
-      </Main>
+      {/* </Main> */}
     </Dashboard>
 
   )

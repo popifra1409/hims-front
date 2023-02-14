@@ -37,7 +37,7 @@ const CreatePatient = () => {
     // }
     return (
         <Dashboard>
-            <Main>
+            
                 < PageHeading heading="Patients" stepName="Nouveau " />
                 <div className="main-content-child">
                     <div className="row">
@@ -58,7 +58,7 @@ const CreatePatient = () => {
                         </div>
                     </div>
                 </div>
-            </Main>
+       
         </Dashboard>
     )
 }

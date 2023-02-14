@@ -9,10 +9,10 @@ import { BsMoonStarsFill } from 'react-icons/bs'
 import { BsPersonCheckFill } from 'react-icons/bs'
 import { BsFileEarmarkTextFill } from 'react-icons/bs'
 
-const SideBar = ({collapseSideBar}) => {
+const SideBar = ({ toggle }) => {
     return (
         // sidebar
-        <aside className={`sidebarArea ${collapseSideBar? 'd-none':''}` } >
+        <aside className={`sidebarArea  ${toggle ? 'd-none' : ''}`}>
             <div className=''>
                 <div className="text-center p-1 ">
                     <h1 className="mt-1 p-4 fs-3 fst-italic fw-normal cursor-pointer border border-primary rounded text-uppercase">himasys</h1>
