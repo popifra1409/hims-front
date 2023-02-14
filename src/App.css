@@ -15,6 +15,11 @@
   }
 }
 
+/* all labels */
+label {
+  font-weight: 600;
+}
+
 
 .pageWrapper {
   min-height: 100vh;

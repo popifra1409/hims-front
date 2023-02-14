@@ -14,6 +14,7 @@ import Register from './views/auth/Register';
 import CreatePatient from './views/dashboard/pages/patients/CreatePatient';
 import Patients from './views/dashboard/pages/patients/Patients';
 import Patient from './views/dashboard/pages/patients/Patient';
+import Hospitalisation from './views/dashboard/pages/hospitalisation/Hospitalisation';
 
 
 function App() {
@@ -23,21 +24,43 @@ function App() {
       <Routes>
         {/* Dashboard  Route */}
         <Route path='/dashboard'>
+          {/* Point d'entrée du dashboard */}
           <Route index element={<Home />} />
+
+          {/* Paramtres Routes */}
           <Route path='parametres' element={<Parametres />} />
+
+          {/* TiersPayeurs Routes */}
           <Route path='tiersPayeurs' element={<TiersPayeurs />} />
+
+          {/* Lits Routes */}
           <Route path='lits' element={<Lits />} />
+
+          {/* Batiments Routes */}
           <Route path='batiments' element={<Batiments />} />
+
+          {/* Chambres Routes */}
           <Route path='chambres' element={<Chambres />} />
+
+          {/* Agents Routes */}
           <Route path='agents' element={<Agents />} />
+
+          {/* Documentation Routes */}
           <Route path='documentation' element={<Documentation />} />
+
+          {/* Hospitalisation Routes */}
+          <Route path='hospitalisation' element={<Hospitalisation />} />
+
+          {/* Patients Routes*/}
           <Route path='newPatient' element={<CreatePatient />} />
           <Route path='patients' element={<Patients />} />
           <Route path='patients/patient' element={<Patient />} />
         </Route>
-
+        {/* Login/Logout and Register Route */}
         <Route path='/' element={<Register />} />
         <Route path='Login' element={<Login />} />
+
+        {/* Page Not Found Route */}
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter >

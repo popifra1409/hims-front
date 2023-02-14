@@ -8,6 +8,7 @@ import { BsFillDoorOpenFill } from 'react-icons/bs'
 import { BsMoonStarsFill } from 'react-icons/bs'
 import { BsPersonCheckFill } from 'react-icons/bs'
 import { BsFileEarmarkTextFill } from 'react-icons/bs'
+import { FaProcedures } from 'react-icons/fa';
 
 const SideBar = ({ toggle }) => {
     return (
@@ -25,6 +26,7 @@ const SideBar = ({ toggle }) => {
                         {/* module caption */}
                         <div className="nav-caption fw-light mt-0">Acceuil et facturation</div>
                         <li ><Link to="/dashboard/patients" className="nav-link"><BsPeopleFill className='nav-link-icons' />Patients</Link></li>
+                        <li ><Link to="/dashboard/hospitalisation" className="nav-link"><FaProcedures className='nav-link-icons' />Hospitalisation</Link></li>
                         <div className="nav-caption fw-light mt-0">Administration</div>
                         <li ><Link to="/dashboard/parametres" className="nav-link"><BsFillGearFill className='nav-link-icons' />Paramétrages</Link></li>
                         <li ><Link to="/dashboard/tiersPayeurs" className="nav-link"><BsWalletFill className='nav-link-icons' />Tiers payeurs</Link></li>
