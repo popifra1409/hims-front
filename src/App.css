@@ -62,8 +62,8 @@ label {
 }
 
 .expan {
-  left:24px;
-  width:96%;
+  left: 24px;
+  width: 96%;
   background-color: rgb(243, 243, 243);
   position: relative;
   overflow: hidden;
@@ -143,6 +143,35 @@ label {
   text-transform: uppercase;
 }
 
+.collapible-block {
+  display: none;
+  padding: 5px 0 5px 50px;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.collapible-block>li>a {
+  font-size: smaller;
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+.collapible-block>li:hover {
+  padding: 5px 0;
+  border: 1px solid white;
+  border-left-color:rgb(10, 88, 202) ;
+  border-bottom-color: rgb(10, 88, 202);
+  border-top-color: rgb(10, 88, 202);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.collapible-block>li > a:hover{
+  color: rgb(10, 88, 202);
+ }
 
 .nav-link {
   /* opacity: .65; */
@@ -150,13 +179,14 @@ label {
   align-items: center;
   font-size: larger;
   font-weight: 900;
+  position: relative;
   /* white-space: nowrap; */
 }
 
 .nav-link:hover {
   /* color: white; */
   margin: -16px 0 30px -30px;
-  padding: 10px 3px;
+  padding: 10px 2px;
   background-color: rgb(10, 88, 202);
   box-shadow: 15px 15px 7px rgb(189, 209, 240);
   border-radius: 3px;

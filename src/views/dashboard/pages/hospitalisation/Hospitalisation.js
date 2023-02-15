@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import PageHeading from "../../components/main/PageHeading"
 import Dashboard from "../../Dashboard"
 
@@ -49,7 +50,7 @@ const Hospitalisation = () => {
                             </select>
                         </div>
                         <div className="col-md-4 mb-2 text-start">
-                            <label className="" for="chambreOccupee">Chambres</label>
+                            <label className="" for="chambreOccupee">Chambres occupée</label>
                             <select className="form-select" name="chambreOccupee">
                                 <option value=''>Faite un choix</option>
                                 <option value=''>CHAM 1</option>
@@ -162,12 +163,9 @@ const Hospitalisation = () => {
                                 <label className="" for="commentaireAccompagnateur">Commentaire</label>
                                 <textarea className="form-control" name="commentaireAccompagnateur"></textarea>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-
                 <div className="row p-3 mb-3">
                     <div className="col-md-12">
                         <div className="row text-start">
@@ -312,7 +310,7 @@ const Hospitalisation = () => {
                 </div>
                 <div className="mb-3 p-2">
                     <button className="btn btn-success text-wrap" style={{ width: '7rem' }}>Hospitaliser</button>
-                    <button className="mx-3 btn btn-light border text-wrap" style={{ width: '6rem' }}>Avis</button>
+                    <Link to='/dashboard/hospitalisation/avis' className="mx-3 btn btn-light border text-wrap" style={{ width: '6rem' }}>Avis</Link>
                     <button className=" btn btn-danger text-wrap" style={{ width: '6rem' }}>Annuler</button>
                 </div>
             </div>

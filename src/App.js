@@ -15,6 +15,8 @@ import CreatePatient from './views/dashboard/pages/patients/CreatePatient';
 import Patients from './views/dashboard/pages/patients/Patients';
 import Patient from './views/dashboard/pages/patients/Patient';
 import Hospitalisation from './views/dashboard/pages/hospitalisation/Hospitalisation';
+import AvisHospi from './views/dashboard/pages/hospitalisation/Avis/AvisHospi';
+import TransferHospi from './views/dashboard/pages/hospitalisation/transfer/TransferHospi';
 
 
 function App() {
@@ -49,7 +51,11 @@ function App() {
           <Route path='documentation' element={<Documentation />} />
 
           {/* Hospitalisation Routes */}
-          <Route path='hospitalisation' element={<Hospitalisation />} />
+          <Route path='hospitalisation' >
+            <Route index element={<Hospitalisation />} />
+            <Route path='avis' element={<AvisHospi/>} />
+            <Route path='transfer' element={<TransferHospi/>} />
+          </Route>
 
           {/* Patients Routes*/}
           <Route path='newPatient' element={<CreatePatient />} />

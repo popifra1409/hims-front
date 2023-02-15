@@ -9,8 +9,22 @@ import { BsMoonStarsFill } from 'react-icons/bs'
 import { BsPersonCheckFill } from 'react-icons/bs'
 import { BsFileEarmarkTextFill } from 'react-icons/bs'
 import { FaProcedures } from 'react-icons/fa';
+import $ from 'jquery';
+
 
 const SideBar = ({ toggle }) => {
+    $(function () {
+        $('.collapseHospitalisation').on('mouseleave ', function () {
+            $('#collapible-block').slideUp('slow')
+        }).css('cursor', 'pointer')
+        $('.collapseHospitalisation').on('mouseenter ', function () {
+            $('#collapible-block').slideDown('slow')
+        })
+
+
+    }
+    )
+
     return (
         // sidebar
         <aside className={`sidebarArea  ${toggle ? 'd-none' : ''}`}>
@@ -26,7 +40,14 @@ const SideBar = ({ toggle }) => {
                         {/* module caption */}
                         <div className="nav-caption fw-light mt-0">Acceuil et facturation</div>
                         <li ><Link to="/dashboard/patients" className="nav-link"><BsPeopleFill className='nav-link-icons' />Patients</Link></li>
-                        <li ><Link to="/dashboard/hospitalisation" className="nav-link"><FaProcedures className='nav-link-icons' />Hospitalisation</Link></li>
+                        <li className='collapseHospitalisation nav-link' ><FaProcedures className='nav-link-icons' />Hospitalisation
+                            <ul className='nav-list collapible-block' id='collapible-block' style={{ marginLeft: '0px' }}>
+                                <li className='nav-item my-3'><Link className='text-uppercase' to='/dashboard/hospitalisation'>Admission</Link></li>
+                                <li className='nav-item my-3'> <Link className='text-uppercase' to="/dashboard/hospitalisation/avis">avis</Link></li>
+                                <li className='nav-item my-3'><Link className='text-uppercase' to='/dashboard/hospitalisation/transfer'>transfer</Link></li>
+                            </ul>
+                        </li>
+
                         <div className="nav-caption fw-light mt-0">Administration</div>
                         <li ><Link to="/dashboard/parametres" className="nav-link"><BsFillGearFill className='nav-link-icons' />Paramétrages</Link></li>
                         <li ><Link to="/dashboard/tiersPayeurs" className="nav-link"><BsWalletFill className='nav-link-icons' />Tiers payeurs</Link></li>
