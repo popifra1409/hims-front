@@ -22,6 +22,22 @@ import ListeFournisseur from './views/dashboard/pages/gestionProduits/listeFourn
 import Fournisseur from './views/dashboard/pages/gestionProduits/Fournisseur';
 import ListeProduit from './views/dashboard/pages/gestionProduits/listeProduit';
 import Patient from './views/dashboard/pages/patients/Patient';
+import ListeBonCommandeFournisseur from './views/dashboard/pages/gestionProduits/listeBonCommandeFournisseur'
+import BonCommandeFournisseur from './views/dashboard/pages/gestionProduits/BonCommandeFournisseur'
+import ModifierBonCommande from './views/dashboard/pages/gestionProduits/ModifierBonCommande';
+import FactureFournisseur from './views/dashboard/pages/gestionProduits/factureFournisseur'
+import ListeFactureFournisseur from './views/dashboard/pages/gestionProduits/listeFactureFournisseur'
+import BonCommandeInterne from './views/dashboard/pages/gestionProduits/bonCommandeInterne'
+import ListeBonCommandeInterne from './views/dashboard/pages/gestionProduits/listeBonCommandeInterne'
+import LivraisonInterne from './views/dashboard/pages/gestionProduits/livraisonInterne'
+import ListeLivraisonInterne from './views/dashboard/pages/gestionProduits/listeLivraisonInterne'
+import ReceptionInterne from './views/dashboard/pages/gestionProduits/receptionInterne'
+import ListeReceptionInterne from './views/dashboard/pages/gestionProduits/listeReceptionInterne'
+
+
+
+
+
 
 
 function App() {
@@ -40,6 +56,29 @@ function App() {
           <Route path='listeCategorieProduit/categorieProduit' element={<CategorieProduit />} />
           <Route path='listeFournisseur' element={<ListeFournisseur />} />
           <Route path='listeFournisseur/fournisseur' element={<Fournisseur />} />
+          <Route path='listeBonCommandeFournisseur' element={<ListeBonCommandeFournisseur />} />
+          <Route path='listeBonCommandeFournisseur/BonCommandeFournisseur' element={<BonCommandeFournisseur />} />
+          <Route path='listeBonCommandeFournisseur/ModifierBonCommande' element={<ModifierBonCommande />} />
+          <Route path='listeFactureFournisseur' element={<ListeFactureFournisseur />} />
+          <Route path='listeFactureFournisseur/factureFournisseur' element={<FactureFournisseur />} />
+          <Route path='listeBonCommandeinterne' element={<ListeBonCommandeInterne />} />
+          <Route path='listeBonCommandeinterne/bonCommandeInterne' element={<BonCommandeInterne />} />
+          <Route path='listeLivraisoninterne' element={<ListeLivraisonInterne />} />
+          <Route path='listeLivraisoninterne/livraisonInterne' element={<LivraisonInterne />} />
+          <Route path='listeReceptionInterne' element={<ListeReceptionInterne />} />
+          <Route path='listeReceptionInterne/receptionInterne' element={<ReceptionInterne />} />
+
+
+
+
+
+
+
+
+
+
+
+
           <Route path='parametres' element={<Parametres />} />
           <Route path='tiersPayeurs' element={<TiersPayeurs />} />
           <Route path='lits' element={<Lits />} />

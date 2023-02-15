@@ -17,9 +17,6 @@ const listeProduit = () => {
                 <div className="container ">
                     <div className="jumbotron ">
                         <div className="card ">
-
-
-
                             <div className="card-header bg-light"  >
                                 <div className="row" >
 
@@ -55,6 +52,7 @@ const listeProduit = () => {
                                 <table className="table  table-bordered">
                                     <thead>
                                         <tr>
+                                            <th scope="col"></th>
                                             <th scope="col">ID</th>
                                             <th scope="col">Libelle catégorie produit</th>
                                             <th scope="col">catégorie parente du produit</th>
@@ -66,9 +64,11 @@ const listeProduit = () => {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th>1</th>
+                                            <td><input style={{ width: "20px" }} type="checkbox" /></td>
                                             <td>Mark</td>
                                             <td>Otto</td>
+                                            <td>Otto</td>
+
                                             <td className="d-grid gap-2 d-md-flex justify-content-md-end">
                                                 <button className="btn btn-primary w-100 me-md-2">Modifier<BiEditAlt style={{ marginLeft: '3px' }} /></button>
                                                 <button className="btn btn-danger w-100">Supprimer<MdDeleteOutline style={{ marginLeft: '3px' }} /></button>
@@ -77,9 +77,11 @@ const listeProduit = () => {
                                         </tr>
 
                                         <tr>
-                                            <th>2</th>
+                                            <td><input style={{ width: "20px" }} type="checkbox" /></td>
                                             <td>Mark</td>
                                             <td>Otto</td>
+                                            <td>Otto</td>
+
                                             <td className="d-grid gap-2 d-md-flex justify-content-md-end">
                                                 <button className="btn btn-primary w-100 me-md-2">Modifier<BiEditAlt style={{ marginLeft: '3px' }} /></button>
                                                 <button className="btn btn-danger w-100">Supprimer<MdDeleteOutline style={{ marginLeft: '3px' }} /></button>

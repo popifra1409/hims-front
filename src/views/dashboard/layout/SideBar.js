@@ -30,6 +30,12 @@ const SideBar = () => {
                         <li ><Link to="/dashboard/listeFamilleProduit" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' /> Famille Produit</Link></li>
                         <li ><Link to="/dashboard/listeCategorieProduit" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Catégories produit</Link></li>
                         <li ><Link to="/dashboard/listeFournisseur" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Fournisseurs</Link></li>
+                        <li ><Link to="/dashboard/listeBonCommandeFournisseur" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Bon commande fournisseur</Link></li>
+                        <li ><Link to="/dashboard/listeFactureFournisseur" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Facture fournisseur</Link></li>
+                        <li ><Link to="/dashboard/listeBonCommandeInterne" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Bon commande interne</Link></li>
+                        <li ><Link to="/dashboard/listeLivraisonInterne" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Livraison interne</Link></li>
+                        <li ><Link to="/dashboard/listeReceptionInterne" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Reception interne</Link></li>
+
 
 
 

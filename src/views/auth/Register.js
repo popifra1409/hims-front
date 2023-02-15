@@ -22,7 +22,7 @@ const Register = () => {
 
                             <form action="" className="formulaire1" method="post">
                                 <div className='header'>
-                                    <h2 className='text-center fw-bold'>Enregistrement des patients</h2>
+                                    <h3 className='text-center fw-bold'>Enregistrement des patients</h3>
                                     <p className='text-secondary text-center fw-bold fs-0.75'>Avez vous déjà un compte? <Link to={{ pathname: "/Login" }} className='text-center fw-bold fs-0.75' style={{ color: '#ff5600', textDecoration: 'none' }}> Connectez-vous ici</Link></p>
 
                                 </div>
