@@ -7,7 +7,7 @@ const Hospitalisation = () => {
     return (
         <Dashboard>
             {/* <Main> */}
-            < PageHeading heading="Hospitalisation" />
+            < PageHeading heading="Hospitalisation" stepName={'admission'} />
             <div className="container">
                 <div className="p-3 border rounded">
                     <div className="row mb-2">
