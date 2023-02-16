@@ -71,7 +71,7 @@ const Patients = () => {
 
     return (
         <Dashboard>
-            <Main>
+            {/* <Main> */}
                 < PageHeading heading="Patients" stepName="" />
                 <Table btnName="Ajouter un patient">
                     <table className="table">
@@ -93,7 +93,7 @@ const Patients = () => {
                     <div className="p-2" style={{ position: 'relative' }}> <updatePatient /></div>
 
                 </Table>
-            </Main>
+            {/* </Main> */}
         </Dashboard>
     )
 }

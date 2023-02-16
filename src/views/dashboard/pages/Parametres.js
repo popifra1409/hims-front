@@ -5,9 +5,9 @@ import PageHeading from "../components/main/PageHeading"
 const Parametres = () => {
   return (
     <Dashboard>
-      <Main>
+      {/* <Main> */}
         < PageHeading heading="Paramètres" />
-      </Main>
+      {/* </Main> */}
     </Dashboard>
   )
 }

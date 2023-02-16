@@ -5,7 +5,7 @@ import { BsSave2 } from 'react-icons/bs'
 const Batiments = () => {
   return (
     <Dashboard>
-      <Main>
+      {/* <Main> */}
         < PageHeading heading="Batiments - Nouveau" />
 
         <div className="container">
@@ -43,7 +43,7 @@ const Batiments = () => {
 
         </div>
 
-      </Main>
+      {/* </Main> */}
     </Dashboard>
   )
 }

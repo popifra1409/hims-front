@@ -6,7 +6,7 @@ import { BsSave2 } from 'react-icons/bs'
 const Chambres = () => {
   return (
     <Dashboard>
-      <Main>
+      {/* <Main> */}
         < PageHeading heading="Chambres - Nouveau" />
         <div className="container">
           <div className='row'>
@@ -60,14 +60,9 @@ const Chambres = () => {
               </div>
             </div>
           </div>
-
-
-
         </div>
-
-
-      </Main >
-    </Dashboard >
+      {/* </Main> */}
+    </Dashboard>
   )
 }
 

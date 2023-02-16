@@ -47,6 +47,10 @@ const Login = () => {
                             </form>
 
                         </div>
+
+                        <div className='p-3 text-center'>
+                            Allez au  <Link className='text-wrap' to="/dashboard">dashboard</Link>
+                        </div>
                     </div>
 
                 </div>

@@ -33,11 +33,9 @@ import LivraisonInterne from './views/dashboard/pages/gestionProduits/livraisonI
 import ListeLivraisonInterne from './views/dashboard/pages/gestionProduits/listeLivraisonInterne'
 import ReceptionInterne from './views/dashboard/pages/gestionProduits/receptionInterne'
 import ListeReceptionInterne from './views/dashboard/pages/gestionProduits/listeReceptionInterne'
-
-
-
-
-
+import Hospitalisation from './views/dashboard/pages/hospitalisation/Hospitalisation';
+import AvisHospi from './views/dashboard/pages/hospitalisation/Avis/AvisHospi';
+import TransferHospi from './views/dashboard/pages/hospitalisation/transfer/TransferHospi';
 
 
 function App() {
@@ -47,6 +45,7 @@ function App() {
       <Routes>
         {/* Dashboard  Route */}
         <Route path='/dashboard'>
+          {/* Point d'entrée du dashboard */}
           <Route index element={<Home />} />
           <Route path='listeProduit' element={<ListeProduit />} />
           <Route path='listeProduit/produit' element={<Produit />} />
@@ -68,31 +67,44 @@ function App() {
           <Route path='listeReceptionInterne' element={<ListeReceptionInterne />} />
           <Route path='listeReceptionInterne/receptionInterne' element={<ReceptionInterne />} />
 
-
-
-
-
-
-
-
-
-
-
-
+          {/* Paramtres Routes */}
           <Route path='parametres' element={<Parametres />} />
+
+          {/* TiersPayeurs Routes */}
           <Route path='tiersPayeurs' element={<TiersPayeurs />} />
+
+          {/* Lits Routes */}
           <Route path='lits' element={<Lits />} />
+
+          {/* Batiments Routes */}
           <Route path='batiments' element={<Batiments />} />
+
+          {/* Chambres Routes */}
           <Route path='chambres' element={<Chambres />} />
+
+          {/* Agents Routes */}
           <Route path='agents' element={<Agents />} />
+
+          {/* Documentation Routes */}
           <Route path='documentation' element={<Documentation />} />
+
+          {/* Hospitalisation Routes */}
+          <Route path='hospitalisation' >
+            <Route index element={<Hospitalisation />} />
+            <Route path='avis' element={<AvisHospi/>} />
+            <Route path='transfer' element={<TransferHospi/>} />
+          </Route>
+
+          {/* Patients Routes*/}
           <Route path='newPatient' element={<CreatePatient />} />
           <Route path='patients' element={<Patients />} />
           <Route path='patients/patient' element={<Patient />} />
         </Route>
-
+        {/* Login/Logout and Register Route */}
         <Route path='/' element={<Register />} />
         <Route path='Login' element={<Login />} />
+
+        {/* Page Not Found Route */}
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter >

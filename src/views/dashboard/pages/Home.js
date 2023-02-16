@@ -4,9 +4,9 @@ import Main from "../layout/Main"
 const Home = () => {
     return (
         <Dashboard>
-            <Main>
+            {/* <Main> */}
               Home here
-            </Main>
+            {/* </Main> */}
         </Dashboard>
     )
 }

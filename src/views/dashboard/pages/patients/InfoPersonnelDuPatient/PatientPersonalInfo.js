@@ -1,7 +1,11 @@
-import { useState,useRef } from "react"
+import { useState, useRef } from "react"
+import { AiOutlineSave } from "react-icons/ai"
+import { BsCheck, BsPencilSquare } from 'react-icons/bs'
+import { FaTrash, FaPlus, FaTimes } from 'react-icons/fa'
+
 const PatientPersonalInfo = ({ onAdd }) => {
   const [patientAge, setPatientAge] = useState(0)
-  const [patientBirthDay, setPatientBirthDay] = useState()
+  const [patientBirthDay, setPatientBirthDay] = useState('')
   const [patientFirstName, setPatientFirstName] = useState('')
   const [patientLastName, setPatientLastName] = useState('')
   const [patientNationalite, setPatientNationalite] = useState('')
@@ -12,7 +16,7 @@ const PatientPersonalInfo = ({ onAdd }) => {
   const [patientSex, setPatientSex] = useState('')
   const [adresse, setAdresse] = useState('')
   const [email, setEmail] = useState('')
-  const [patientBarCode,setPatientBarCode] = useState('')
+  const [patientBarCode, setPatientBarCode] = useState('')
 
   // sibler directement les inputs
   const patientFirstNameRef = useRef(null)
@@ -28,13 +32,18 @@ const PatientPersonalInfo = ({ onAdd }) => {
   const patientAdresseRef = useRef(null)
   const patientEmailRef = useRef(null)
   const patientCodeBarRef = useRef(null)
+  const BsCheckRef = useRef(null)
+  const BsTimesRef = useRef(null)
+  var age
 
   const OnSubmit = (e) => {
     e.preventDefault()
-    onAdd({ patientFirstName, patientLastName, patientBirthDay, patientAge, patientNationalite, patientPlaceOfBirth, patientProfession, patientReligion, telephone, patientSex, adresse,patientBarCode,email })
+    onAdd({ patientFirstName, patientLastName, patientBirthDay, patientAge, patientNationalite, patientPlaceOfBirth, patientProfession, patientReligion, telephone, patientSex, adresse, patientBarCode, email })
     // clear field
     clearField()
   }
+
+  // console.log(  patientFirstNameRef)
 
   const clearField = () => {
     // Liberer les chants
@@ -79,76 +88,187 @@ const PatientPersonalInfo = ({ onAdd }) => {
 
   }
 
+  // mutateField
+  const toggleFieldState = () => {
+    let iconTimes = document.getElementById('times')
+    let iconCheck = document.getElementById('check')
+    let field = document.getElementById('dob')
+
+
+    // top: '35px', right: '3px', color: 'green', backgroundColor: 'white', fontSize: '33px' 
+    if (patientAgeRef.current.value === '') {
+      iconCheck.style.cssText = 'top: 35px; right: 3px; color: green; background-color: white; font-size: 33px;display:none '
+      field.style.cssText = 'border-color:red'
+      iconTimes.style.cssText = 'top: 35px; right: 3px; color: red; background-color: white; font-size: 33px;'
+    }
+    else {
+      iconCheck.style.cssText = 'top: 35px; right: 3px; color: green; background-color: white; font-size: 33px;'
+      field.style.cssText = 'border-color:green'
+      iconTimes.style.cssText = 'top: 35px; right: 3px; color: red; background-color: white; font-size: 33px;display:none '
+    }
+  }
+
+  // Calcule l'age
+  const computeAge = () => {
+    let dob = new Date(patientBirthDayRef.current.value)
+    let dobString = patientBirthDayRef.current.value
+
+    //calculate month difference from current date in time.
+    var month_diff = Date.now() - dob.getTime();
+    //convert the calculated difference in date format.
+    var age_dt = new Date(month_diff);
+    //extract year from date.
+    var year = age_dt.getUTCFullYear();
+    var dd = age_dt.getDay()
+    var mm = age_dt.getMonth() + 1
+    var yy = dob.getFullYear()
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    age = Math.abs(year - 1970)
+
+    setPatientBirthDay(age)
+
+    patientAgeRef.current.value = age
+    const f = dd + '/' + mm + '/' + yy
+    console.log(mm)
+    // console.log()
+  }
+
+  const computeBirthDate = (value) => {
+    let current_year = new Date().getFullYear()
+    let day = Math.round(Math.random(new Date().getDay()) * 30)
+    let month = Math.round(Math.random(new Date().getMonth()) * 12)
+    let birth_year = current_year - value
+    let birth_date
+
+    if (day < 10) { day = '0' + day } else if (day < 0) { day++ }
+    if (month < 10) { month = '0' + month } else if (day < 0) { day++ }
+    birth_date = birth_year + '-' + month + '-' + day
+    console.log(birth_date)
+    // console.log(current_month)
+
+    patientBirthDayRef.current.value = birth_date
+
+    toggleFieldState()
+
+  }
+
   return (
     <>
-      <div className="row m-3 p-2">
-        <label className="col-2" for="nom">Nom *</label>
-        <input ref={patientFirstNameRef} className="col-10 w-full" type="text" name="nom" onChange={(e) => setPatientFirstName(e.target.value)} />
+      <div className="my-3 col-md-12 text-start">
+        <h5 className="fs-6">Identité du patient</h5>
       </div>
-      <div className="row m-3 p-2">
-        <label className="col-2" for="prenom">Prenom</label>
-        <input ref={patientLastNameRef} className="col-10" type="text" name="prenom" onChange={(e) => setPatientLastName(e.target.value)} />
-      </div>
-      <div className="row m-3 p-2">
-        <div className="col-md-6">
-          <div className="row">
-            <label className="col-4" for="date_naissance">Date de naissance *</label>
-            <input ref={patientBirthDayRef} className="col-7 " type="date" name="date_naissance" onChange={(e) => setPatientBirthDay(e.target.value)} />
+      <form className="border p-3">
+        <div className="row mb-3">
+          <div className="col-md-4">
+            <label className="my-1 col-md-12 text-start" for="nom">Nom <i className="text-danger">*</i></label>
+            <input ref={patientFirstNameRef} className="form-control" type="text" name="nom" onChange={(e) => setPatientFirstName(e.target.value)} />
           </div>
-          <div className="row">
-            <label className="col-4" for="age">Age *</label>
-            <input ref={patientAgeRef} className="col-7 " type="number" name="age" onChange={(e) => setPatientAge(e.target.value)} />
+          <div className="col-md-4">
+            <label className="my-1 col-md-12 text-start" for="prenom">Prenom</label>
+            <input ref={patientLastNameRef} className="form-control" type="text" name="prenom" onChange={(e) => setPatientLastName(e.target.value)} />
           </div>
-        </div>
-        <div className="col-md-6">
-          <div className="row">
-            <label className="col-2" for="lieu_naissance">Lieu de naissance * </label>
-            <input ref={patientPlaceOfBirthRef} className="col-10" type="text" name="lieu_naissance" onChange={(e) => setPatientPlaceOfBirth(e.target.value)} />
-          </div>
-        </div>
-        <div className="col-md-6">
-          <div className="row">
-            <label className="col-2" for="lieu_naissance"> Code Bar </label>
-            <input ref={patientCodeBarRef} className="col-10" type="text" name="lieu_naissance" onChange={(e) => setPatientBarCode(e.target.value)} />
+          <div className="col-md-4">
+            <div className="col-md-12">
+              <div className="col-md-12 position-relative">
+                <label className="my-1 col-md-12 text-start" for="date_naissance">Date de naissance <i className="text-danger">*</i></label>
+                <input id="dob" disabled ref={patientBirthDayRef} className="form-control " type="date" name="date_naissance" style={{ borderColor: 'red' }} />
+                <BsCheck id="check" className="p-1 position-absolute" style={{ top: '35px', right: '3px', color: 'green', backgroundColor: 'white', fontSize: '33px' }} />
+                <FaTimes id="times" className="p-2 position-absolute" style={{ top: '35px', right: '3px', color: 'red', backgroundColor: 'white', fontSize: '33px' }} />
+              </div>
+              <div className="col-md-12">
+                <label className="my-1 col-md-12 text-start" for="age">Age <i className="text-danger">*</i></label>
+                <input ref={patientAgeRef} className="form-control" type="number" name="age" onChange={(e) => computeBirthDate(e.target.value)} />
+              </div>
+            </div>
           </div>
         </div>
+        <div className="row mb-3">
 
+          <div className="col-md-4">
+            <div className="col-md-12">
+              <label className="my-1 col-md-12 text-start" for="lieu_naissance">Lieu de naissance <i className="text-danger">*</i></label>
+              <input ref={patientPlaceOfBirthRef} className="form-control" type="text" name="lieu_naissance" onChange={(e) => setPatientPlaceOfBirth(e.target.value)} />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="col-md-12">
+              <label className="my-1 col-md-12 text-start" for="lieu_naissance"> Code Bar </label>
+              <input ref={patientCodeBarRef} className="form-control" type="text" name="lieu_naissance" onChange={(e) => setPatientBarCode(e.target.value)} />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <label className="my-1 col-md-12 text-start" for="sexe">Sexe <i className="text-danger">*</i></label>
+            <select ref={patientSexRef} className=" form-select" name="sexe" onChange={(e) => setPatientSex(e.target.value)}>
+              <option value="">Choisir le genre </option>
+              <option value="NON_PRECISE" >NON_PRECISE</option>
+              <option value="MASCULIN" >Masculin</option>
+              <option value="FEMININ" >Feminin</option>
+            </select>
+          </div>
+        </div>
+        <div className="row mb-3">
+          <div className="col-md-4">
+            <label className="my-1 col-md-12 text-start" for="adresse">Adresse <i className="text-danger">*</i></label>
+            <input ref={patientAdresseRef} className="form-control" type="text" name="adresse" onChange={(e) => setAdresse(e.target.value)} />
+          </div>
+          <div className="col-md-4">
+            <label className="my-1 col-md-12 text-start" for="telephone">Téléphone <i className="text-danger">*</i></label>
+            <input ref={patientTelephoneRef} className="form-control" type="tel" name="telephone" onChange={(e) => setTelephone(e.target.value)} />
+          </div>
+          <div className="col-md-4">
+            <label className="my-1 col-md-12 text-start" for="nationalite">nationalité *</label>
+            <input ref={patientNationaliteRef} className="form-control" type="text" name="nationalite" onChange={(e) => setPatientNationalite(e.target.value)} />
+          </div>
+        </div>
+        <div className="row mb-3">
+          <div className="col-md-4 mb-2">
+            <label className="my-1 col-md-12 text-start" for="religion">Religion</label>
+            <input ref={patientReligionRef} className="form-control" type="text" name="religion" onChange={(e) => setPatientReligion(e.target.value)} />
+          </div>
+          <div className="col-md-4 mb-2">
+            <label className="my-1 col-md-12 text-start" for="profession">Profession <i className="text-danger">*</i></label>
+            <input ref={patientProfessionRef} className="form-control" type="text" name="profession" onChange={(e) => setPatientProfession(e.target.value)} />
+          </div>
+          <div className="col-md-4">
+            <label className="my-1 col-md-12 text-start" for="email">Email</label>
+            <input ref={patientEmailRef} className="form-control" type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+          </div>
+        </div>
+      </form>
+      <div className="my-3 col-md-12 text-start">
+        <h5 className="fs-6">Infos supplémentaires</h5>
       </div>
-      <div className="row m-3 p-2">
-        <label className="col-2" for="sexe">Sexe *</label>
-        <select ref={patientSexRef} name="sexe" onChange={(e) => setPatientSex(e.target.value)}>
-          <option value="">Choisir le genre </option>
-          <option value="NON_PRECISE" >NON_PRECISE</option>
-          <option value="MASCULIN" >Masculin</option>
-          <option value="FEMININ" >Feminin</option>
-        </select>
+      <div className="border p-3">
+        <div className="mb-3 text-end">
+          <button className="mb-3 p-1 text-wrap btn btn-primary" style={{ width: '6rem' }}><FaPlus className="me-2" />Ajouter</button>
+        </div>
+        <table className="table">
+          <thead className="table-light text-uppercase">
+            <tr>
+              <th>libelle</th>
+              <th>value</th>
+              <th>action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Telephone secondaire</td>
+              <td>677898139</td>
+              <td>
+                <span className="mx-2"><BsPencilSquare /></span>
+                <span className="mx-2"><FaTrash /></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div className="row m-3 p-2">
-        <label className="col-3" for="adresse">Adresse *</label>
-        <input ref={patientAdresseRef} className="col-9 w-full" type="text" name="adresse" onChange={(e) => setAdresse(e.target.value)} />
+      <div className="mt-3 me-3 ">
+        <button onClick={OnSubmit} className="btn btn-success px-0 text-wrap rounded text-white" type="button" style={{ width: '6rem' }}>Enregistrer<AiOutlineSave /></button>
       </div>
-      <div className="row m-3 p-2">
-        <label className="col-3" for="telephone">Téléphone *</label>
-        <input ref={patientTelephoneRef} className="col-9" type="tel" name="telephone" onChange={(e) => setTelephone(e.target.value)} />
-      </div>
-      <div className="row m-3 p-2">
-        <label className="col-3" for="nationalite">nationalité *</label>
-        <input ref={patientNationaliteRef} className="col-9" type="text" name="nationalite" onChange={(e) => setPatientNationalite(e.target.value)} />
-      </div>
-      <div className="row m-3 p-2">
-        <label className="col-3" for="religion">Religion</label>
-        <input ref={patientReligionRef} className="col-9" type="text" name="religion" onChange={(e) => setPatientReligion(e.target.value)} />
-      </div>
-      <div className="row mx-3 px-2">
-        <label className="col-3" for="profession">Profession *</label>
-        <input ref={patientProfessionRef} className="col-9" type="text" name="profession" onChange={(e) => setPatientProfession(e.target.value)} />
-      </div>
-      <div className="row mx-3 px-2">
-        <label className="col-3" for="email">Email</label>
-        <input ref={patientEmailRef} className="col-9" type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
-      </div>
-      <input className="btn btn-primary" type="button" value="Submit" onClick={OnSubmit} />
     </>
   )
 }
