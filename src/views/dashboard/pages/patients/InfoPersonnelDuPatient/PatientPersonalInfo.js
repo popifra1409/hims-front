@@ -1,5 +1,4 @@
-import { useRef, useState } from "react"
-
+import { useState,useRef } from "react"
 const PatientPersonalInfo = ({ onAdd }) => {
   const [patientAge, setPatientAge] = useState(0)
   const [patientBirthDay, setPatientBirthDay] = useState()
@@ -34,7 +33,7 @@ const PatientPersonalInfo = ({ onAdd }) => {
     e.preventDefault()
     onAdd({ patientFirstName, patientLastName, patientBirthDay, patientAge, patientNationalite, patientPlaceOfBirth, patientProfession, patientReligion, telephone, patientSex, adresse,patientBarCode,email })
     // clear field
-    // clearField()
+    clearField()
   }
 
   const clearField = () => {
@@ -149,7 +148,7 @@ const PatientPersonalInfo = ({ onAdd }) => {
         <label className="col-3" for="email">Email</label>
         <input ref={patientEmailRef} className="col-9" type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
       </div>
-      <input type="button" value="Submit" onClick={OnSubmit} />
+      <input className="btn btn-primary" type="button" value="Submit" onClick={OnSubmit} />
     </>
   )
 }

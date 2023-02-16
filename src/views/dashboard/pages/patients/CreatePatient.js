@@ -1,23 +1,23 @@
-import Dashboard from "../Dashboard"
-import Main from "../layout/Main"
-import PatientPersonalInfo from '../components/patient/PatientPersonalInfo'
-import AddressEtContact from '../components/patient/AddressEtContact'
-import PageHeading from "../components/main/PageHeading"
-import PriseEnCharge from "../components/patient/PriseEnCharge"
-import PatientImgUpload from "../components/patient/PatientImgUpload"
+import Dashboard from "../../Dashboard"
+import Main from "../../layout/Main"
+import PatientPersonalInfo from './InfoPersonnelDuPatient/PatientPersonalInfo'
+import AddressEtContact from '../../components/patient/AddressEtContact'
+import PageHeading from "../../components/main/PageHeading"
+import PriseEnCharge from "../../components/patient/PriseEnCharge"
+import PatientImgUpload from "../../components/patient/PatientImgUpload"
 import { FaPlusCircle } from 'react-icons/fa'
 import { useEffect, useState } from "react"
-import RestApi from "../../../services/RestApi"
+import RestApi from "../../../../services/RestApi"
 
-const NewPatient = () => {
+const CreatePatient = () => {
     const [step, setStep] = useState(1)
 
-     function addInput (inputs) {
+     function addPatient (data) {
         const api = new RestApi()
 
-        console.log(inputs)
+        console.log(data)
 
-      return  api.savePatient(inputs)
+      return  api.savePatient(data)
     }
 
 
@@ -47,20 +47,7 @@ const NewPatient = () => {
                         <h1 className="left-0 col-6 fs-4">Informations patient</h1>
                     </div>
                     <div className="row">
-                        {/* patient's profil */}
-                        <div className="col-3">
-                            <div className="m-2 p-3 position-relative">
-                                <img className="rounded-circle" style={{ width: '180px', height: '180px' }} src={require('../../../images/empty_person.png')} alt="profile img" />
-                                <FaPlusCircle style={{ width: '30px', height: '30px', position: 'absolute', top: '140px', right: '150px' }} />
-                            </div>
-                            <ul className="list-group">
-                                <li className="list-group-item border-0" style={{ fontWeight: step === 1 ? '600' : '' }} >Informations personnelles</li>
-                                <li className="list-group-item border-0" style={{ fontWeight: step === 2 ? '600' : '' }} >Address et contact</li>
-                                <li className="list-group-item border-0" style={{ fontWeight: step === 3 ? '600' : '' }} >Prise en charge</li>
-                                <li className="list-group-item border-0" style={{ fontWeight: step === 4 ? '600' : '' }} >Téléchargement de fichiers</li>
-                            </ul>
-                            <hr className="vertical-bar" />
-                        </div>
+                     
                         {/* patient create forms */}
                         <div className="col-9 px-5 d-flex">
                             <div className="">
@@ -73,7 +60,7 @@ const NewPatient = () => {
                                 <form>
                                     {/* personal infor */}
                                     <div style={{ display: step === 1 ? '' : 'none' }} >
-                                        <PatientPersonalInfo onAdd={addInput} />
+                                        <PatientPersonalInfo onAdd={addPatient} />
                                     </div>
 
                                     {/* addresse et contact */}
@@ -104,4 +91,4 @@ const NewPatient = () => {
     )
 }
 
-export default NewPatient
+export default CreatePatient

@@ -1,13 +1,126 @@
-
- *{
-  margin: 0;
-  padding: 0;
-  
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*=========================== css formulaire d'inscription et de connexion================*/
+.header {
+  margin-top: 90px;
+  text-align: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.formulaire {
+  margin-top: 30px;
+  border: 1px solid #fff;
+  height: 100%;
+  width: 360px;
 }
+
+.formulaire1 {
+
+  border: 1px solid #fff;
+  height: 70%;
+  width: 100%;
+}
+
+
+
+.formulaire a {
+  text-decoration: none;
+}
+
+/*=========================== fin css ormulaire inscription et connexion================*/
+
+/*================================================= Chambre css ================================================*/
+.container {
+  background-color: #FFFFFF;
+  width: 100%;
+  padding: 35px 50px;
+  border-radius: 10px;
+  box-shadow: 20px 30px 25px rgba(0, 0, 0, 0.15);
+
+}
+
+form {
+  width: 100%;
+  position: relative;
+  margin: 30px auto 0 auto;
+  margin-top: 5px;
+}
+
+section {
+  display: flex;
+
+
+}
+
+textarea,
+input {
+  font-weight: 400;
+  padding: 8px 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.inp {
+  width: 100%;
+  text-align: justify;
+  padding: 5px;
+}
+
+.area {
+  text-align: justify;
+  padding: 5px;
+}
+
+button {
+  float: right;
+
+}
+
+/*===========================fin css chambre================*/
+
+/*==================css lit============================*/
+
+.inpt {
+  width: 100%;
+  text-align: justify;
+  padding: 5px;
+}
+
+.litdescript {
+  text-align: justify;
+  padding: 5px;
+}
+
+/*===========================fin css lit================*/
+
+/*=========================== css Batiment================*/
+
+.in {
+  width: 70%;
+  text-align: justify;
+  padding: 5px;
+}
+
+.batdescript {
+  text-align: justify;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+/*===========================fin css Batiment================*/
+
+/*=========================== css Agent================*/
+.containers {
+  background-color: #FFFFFF;
+  width: 100%;
+  padding: 35px 50px;
+  border-radius: 10px;
+  box-shadow: 20px 30px 25px rgba(0, 0, 0, 0.15);
+  text-align: justify;
+}
+
+.btn {
+  width: 15%;
+  float: right;
+}
+
+/*=========================== fin css agent================*/
+
+/*=========================== css creation produit================*/
