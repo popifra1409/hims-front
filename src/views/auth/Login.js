@@ -21,7 +21,7 @@ const Login = () => {
 
                         <div className="container-fluid " style={{ background: '#FFFFFF' }}>
                             <div className='header'>
-                                <h4 className='text-center fw-bold'>Bienvenue sur HYMASYS</h4>
+                                <h4 className='text-center fw-bold'>Bienvenue sur HIMASYS</h4>
                                 <p className='text-center'>please sign-in to your account and start<br></br> the adventure</p>
                             </div>
                             <form action="" className="formulaire" method="post">

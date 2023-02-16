@@ -22,7 +22,7 @@ const Register = () => {
 
                             <form action="" className="formulaire1" method="post">
                                 <div className='header'>
-                                    <h2 className='text-center fw-bold'>Enregistrement des patients</h2>
+                                    <h3 className='text-center fw-bold'>Enregistrement des patients</h3>
                                     <p className='text-secondary text-center fw-bold fs-0.75'>Avez vous déjà un compte? <Link to={{ pathname: "/Login" }} className='text-center fw-bold fs-0.75' style={{ color: '#ff5600', textDecoration: 'none' }}> Connectez-vous ici</Link></p>
 
                                 </div>
@@ -50,7 +50,7 @@ const Register = () => {
                                 </div><br></br>
                                 <div>
                                     <input type="checkbox" style={{ width: '50px' }} />
-                                    <label htmlfor="" className=' fw-bold'> J'accepte <span className='fs-bold' style={{ color: '#ff5600' }}>Termes et Conditions</span></label>
+                                    <label htmlfor="" className=' fw-bold '> J'accepte <span className='fs-bold' style={{ color: '#ff5600' }}>Termes et Conditions</span></label>
                                 </div><br></br>
                                 <div >
                                     <a href='#' type='submit' className="btn btn-lg btn-ligth w-100 mb-5 fw-bold" style={{ background: '#ff5600', color: '#FFFFFF' }} >S'inscrire</a>
