@@ -1,6 +1,6 @@
 import http from "./axiosInstance";
 
-class RestApi {
+class IdentificationResource {
 
     // Lister tout les patients
     getAllPatients = async () => {
@@ -28,4 +28,4 @@ class RestApi {
     }
 }
 
-export default RestApi
+export default IdentificationResource

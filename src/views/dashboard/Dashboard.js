@@ -13,7 +13,7 @@ const Dashboard = (props) => {
 
     return (
         <div className="pageWrapper">
-            <SideBar toggle={collapse} />
+            <SideBar toggle={collapse} onToggleSideBar={setCollapseSideBar} />
             <NavBar onToggleSideBar={setCollapseSideBar} />
             <Main toggle={collapse}>
                 {props.children}

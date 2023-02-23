@@ -1,13 +1,43 @@
 import { Link } from "react-router-dom"
 import PageHeading from "../../components/main/PageHeading"
 import Dashboard from "../../Dashboard"
+import AdmissionResource from "../../../../services/AdmissionResource"
+import { useEffect, useState } from "react"
 
 
 const Hospitalisation = () => {
+
+    const [batiments, setBatiments] = useState([])
+    const [chambres, SetChambres] = useState([])
+    const [lits,setLits] = useState([])
+
+    const api = new AdmissionResource()
+
+    const getBatiments = async () => {
+        return await api.getBatiments().then((res) => setBatiments(res.data.data))
+    }
+
+    const getChambres = async () => {
+        return await api.getChambres().then((res) => SetChambres(res.data.data))
+    }
+ 
+    const getLits = async () => {
+        return await api.getLits().then((res)=>setLits(res.data.data))
+    }
+    useEffect(() => {
+        getBatiments();
+        getChambres();
+        getLits()
+
+        console.log(batiments)
+        console.log(chambres)
+        console.log(lits)
+    }, [])
+
     return (
         <Dashboard>
             {/* <Main> */}
-            < PageHeading heading="Hospitalisation" stepName={'admission'} />
+            < PageHeading heading="Hospitalisation" stepName={'Créer un avis'} />
             <div className="container">
                 <div className="p-3 border rounded">
                     <div className="row mb-2">
@@ -45,24 +75,29 @@ const Hospitalisation = () => {
                             <label className="" for="batiment">Batiment</label>
                             <select name="batiment" className="form-select">
                                 <option value="">Faites un choix</option>
-                                <option value="">BAT 1</option>
-                                <option value="">BAT 2</option>
+                                {batiments.map((batiment) => (
+                                    <option value={batiment.id}>{batiment.libelle}</option>
+                                ))}
                             </select>
                         </div>
                         <div className="col-md-4 mb-2 text-start">
                             <label className="" for="chambreOccupee">Chambres occupée</label>
                             <select className="form-select" name="chambreOccupee">
                                 <option value=''>Faite un choix</option>
-                                <option value=''>CHAM 1</option>
-                                <option value=''>CHAM 2</option>
+                                {chambres.map((chambre) =>
+                                (
+                                        <option value={chambre.id}>{chambre.libelle}</option>
+                                    ))}
                             </select>
                         </div>
                         <div className="col-md-4 mb-2 text-start">
                             <label className="" for="lit">Lit</label>
                             <select className="form-select" name="lit">
                                 <option value=''>Faite un choix</option>
-                                <option value=''>LIT 1</option>
-                                <option value=''>LIT 2</option>
+                                {lits.map((lit)=>
+                                (
+                                    <option value={lit.id}>{lit.libelle}</option>
+                                ))}
                             </select>
                         </div>
                     </div>

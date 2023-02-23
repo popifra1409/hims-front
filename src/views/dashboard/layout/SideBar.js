@@ -11,9 +11,15 @@ import { BsFileEarmarkTextFill } from 'react-icons/bs'
 import { MdOutlineLocalPharmacy } from 'react-icons/md'
 import { FaProcedures } from 'react-icons/fa';
 import $ from 'jquery';
+import { useState } from 'react';
 
 
-const SideBar = ({ toggle }) => {
+const SideBar = ({ toggle,onToggleSideBar}) => {
+    const [toggleSideBar, setToggleSideBar] = useState(false)
+    const setCollapseSideBar = () => {
+        setToggleSideBar(!toggleSideBar)
+        onToggleSideBar(!toggleSideBar)
+    }
     $(function () {
         $('.collapseHospitalisation').on('mouseleave ', function () {
             $('#collapible-block').slideUp('slow')
@@ -23,23 +29,25 @@ const SideBar = ({ toggle }) => {
         })
 
 
+
     }
     )
 
     return (
         // sidebar
-        <aside className={`sidebarArea  ${toggle ? 'd-none' : ''}`}>
+        <aside id='sidebar' className={`${toggle? 'show-side-bar show-lg-side-bar':'sidebarArea'}`} style={{transition:'all 1s ease'}}>
             <div className=''>
+                {toggle && <span onClick={() => setCollapseSideBar()} className='text-black position-absolute fs-3 fw-bold cursor-pointer close d-lg-none' style={{ top: '0', right: '15px' }}>x</span>}
                 <div className="text-center p-1 ">
                     <h1 className="mt-1 p-4 fs-3 fst-italic fw-normal cursor-pointer border border-primary rounded text-uppercase">himasys</h1>
                 </div>
                 <div style={{ marginTop: '30px' }}>
                     <ul className="nav-list">
                         {/* module caption */}
-                        <div className="nav-caption fw-light mt-4">Accueil</div>
+                        <div className="nav-caption fw-light mt-4"></div>
                         <li ><Link to="/dashboard" className="nav-link"><BsFillHouseFill className='nav-link-icons' />Tableau de bord</Link></li>
                         {/* module caption */}
-                        <div className="nav-caption fw-light mt-0">Gestion des produits</div>
+                        <div className="nav-caption fw-light mt-0 ">Pharmacie</div>
                         <li ><Link to="/dashboard/listeProduit" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' /> Produits</Link></li>
                         <li ><Link to="/dashboard/listeFamilleProduit" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' /> Famille Produit</Link></li>
                         <li ><Link to="/dashboard/listeCategorieProduit" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Catégories produit</Link></li>

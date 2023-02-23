@@ -7,13 +7,13 @@ import { FaPlus } from 'react-icons/fa'
 import PriseParametresSoins from './parametresSoins/parametresSoins'
 import { AiOutlineSave } from 'react-icons/ai'
 import { useEffect, useState } from "react"
-import RestApi from "../../../../services/RestApi"
+import IdentificationResource from "../../../../services/IdentificationResource"
 
 const CreatePatient = () => {
     const [step, setStep] = useState(1)
 
     function addPatient(data) {
-        const api = new RestApi()
+        const api = new IdentificationResource()
 
         console.log(data)
 

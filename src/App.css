@@ -38,7 +38,18 @@ label {
   position: fixed;
   top: 15px;
   left: 220px;
-  z-index: 1;
+  /* z-index: 1; */
+  background-color: white;
+  box-shadow: -5px 2px 15px rgb(214, 212, 212), 5px 2px 15px rgb(214, 212, 212);
+  margin-bottom: 15px;
+}
+
+.top-bar {
+  position: fixed;
+  top: 15px;
+  left: 80px;
+  width: 93%;
+  /* z-index: 1; */
   background-color: white;
   box-shadow: -5px 2px 15px rgb(214, 212, 212), 5px 2px 15px rgb(214, 212, 212);
   margin-bottom: 15px;
@@ -61,11 +72,12 @@ label {
   overflow: hidden;
 }
 
-.expan {
-  left: 24px;
-  width: 96%;
-  background-color: rgb(243, 243, 243);
-  position: relative;
+.expand {
+  left: 0px;
+  width: 20%;
+  transition: all 1s ease;
+  /* background-color: rgb(243, 243, 243); */
+  /* position: relative; */
   overflow: hidden;
 }
 
@@ -115,7 +127,27 @@ label {
   position: fixed;
   overflow: hidden auto;
   left: 0;
+  transition: all 1s ease;
 }
+
+.show-lg-side-bar {
+  width: 5%;
+  height: 98%;
+  background-color: white;
+  box-shadow: 0px 5px 15px rgb(214, 212, 212);
+  position: fixed;
+  overflow: hidden auto;
+  left: 5px;
+  top: 5px;
+  transition: all 1s ease;
+}
+
+/* 
+.show-side-bar {
+  width: 0%;
+  background-color: white;
+  transition: all 1s ease;
+} */
 
 .prev-form {
   position: absolute;
@@ -163,15 +195,16 @@ label {
 .collapible-block>li:hover {
   padding: 5px 0;
   border: 1px solid white;
-  border-left-color:rgb(10, 88, 202) ;
+  border-left-color: rgb(10, 88, 202);
   border-bottom-color: rgb(10, 88, 202);
   border-top-color: rgb(10, 88, 202);
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-.collapible-block>li > a:hover{
+
+.collapible-block>li>a:hover {
   color: rgb(10, 88, 202);
- }
+}
 
 .nav-link {
   /* opacity: .65; */
@@ -183,13 +216,23 @@ label {
   /* white-space: nowrap; */
 }
 
-.nav-link:hover {
-  /* color: white; */
-  margin: -16px 0 30px -30px;
+.active-nav-link {
+  margin: -16px 0 30px -35px;
   padding: 10px 2px;
   background-color: rgb(10, 88, 202);
   box-shadow: 15px 15px 7px rgb(189, 209, 240);
   border-radius: 3px;
+  color: white !important;
+}
+
+.nav-link:hover {
+  /* color: white; */
+  margin: -16px 0 30px -35px;
+  padding: 10px 2px;
+  background-color: rgb(10, 88, 202);
+  box-shadow: 15px 15px 7px rgb(189, 209, 240);
+  border-radius: 3px;
+  transition: all .5s ease-in-out;
   color: white !important;
 }
 
@@ -293,7 +336,7 @@ label {
 
 .nav-heading {
   /* padding-right:40px; */
-  margin-top: 0px;
+  margin: 10px 15px;
   justify-content: space;
   opacity: .66;
 }
@@ -305,4 +348,64 @@ label {
 .search-addPatient {
   margin-left: 480px;
   padding: 5px;
+}
+
+
+/***************************** MEDIA QUERY *****************************************/
+@media screen and (max-width:768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  /* side bar start */
+  .sidebarArea {
+    width: 0;
+  }
+
+  .show-side-bar {
+    z-index: 2;
+    width: 35%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0px 5px 15px rgb(214, 212, 212);
+    position: fixed;
+    overflow: hidden auto;
+    transition: all 1s ease;
+    left: 0;
+  }
+
+  /* side bar end */
+
+  /* navbar start */
+  .fixed-top-bar {
+    width: 98%;
+    top: 0;
+    left: 0px;
+    margin: 5px;
+  }
+
+  /* .top-bar {
+    width: 98%;
+    top: 0;
+    left: 0px;
+    margin: 5px;
+  } */
+
+  /* navbar end */
+
+  .main-block {
+    width: 100%;
+    left: 0;
+  }
+
+  .main-content {
+    width: 100%;
+    margin: 0 5px;
+  }
+
+  .about {
+    width: 100%;
+    margin-top: 15px;
+  }
+
 }

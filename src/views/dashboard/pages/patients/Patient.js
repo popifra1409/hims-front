@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom"
-import RestApi from "../../../../services/RestApi"
 import { useEffect, useState } from 'react'
 import Dashboard from "../../Dashboard"
 import Main from "../../layout/Main"
 import PageHeading from "../../components/main/PageHeading"
 import UpdateForm from "../../components/UpdateForm"
 import { BsPencilSquare, BsChevronCompactLeft} from 'react-icons/bs'
+import IdentificationResource from "../../../../services/IdentificationResource"
 
 const Patient = () => {
 
@@ -27,7 +27,7 @@ const Patient = () => {
   // single patient
   const [patient, setPatient] = useState({})
   // api instance
-  const api = new RestApi()
+  const api = new IdentificationResource()
   const location = useLocation()
   const { patientId } = location.state
 

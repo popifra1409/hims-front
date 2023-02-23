@@ -1,18 +1,25 @@
 import { FaBars } from 'react-icons/fa'
 import { BiBell } from 'react-icons/bi'
 import { useState } from 'react'
+import $ from 'jquery'
 const NavBar = ({onToggleSideBar }) => {
     const [toggleSideBar,setToggleSideBar] = useState(false)
     const setCollapseSideBar = () => {
         setToggleSideBar(!toggleSideBar)
         onToggleSideBar(!toggleSideBar)
     }
+
+    $(function(){
+        $('#btn').on('click',function(){
+            $('.main-block').toggleClass('expand')
+        })
+    })
     return (
         //Navbar
-        <nav className={`navbar navbar-expand ${toggleSideBar? 'test':'fixed-top-bar'} rounded`} style={{width:toggleSideBar?'98%':''}}>
+        <nav className={`navbar navbar-expand ${toggleSideBar? 'top-bar':'fixed-top-bar'} rounded`} style={{transition:'all 1s ease'}}>
             <div className='container-fluid'>
                 <div className="navbar-brand ">
-                    <button onClick={() => setCollapseSideBar()} className="btn btn-light active " style={{width:'3rem'}}><FaBars /></button>
+                    <button id='btn' onClick={() => setCollapseSideBar()} className="btn btn-light active " style={{width:'3rem'}}><FaBars /></button>
                 </div>
                 <div className='text-white  user-profil'>
                     <div className='notification-bell text-black'>

@@ -10,7 +10,7 @@ import { MdDeleteOutline } from 'react-icons/md'
 const listeBonCommandeFournisseur = () => {
     return (
         <Dashboard>
-            <Main>
+            
                 < PageHeading heading="Liste bon de commande fournisseur" />
 
                 <div className="container ">
@@ -109,7 +109,7 @@ const listeBonCommandeFournisseur = () => {
 
                     </form>
                 </div>
-            </Main>
+            
         </Dashboard>
     )
 }

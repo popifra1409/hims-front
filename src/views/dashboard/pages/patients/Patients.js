@@ -2,7 +2,7 @@ import Dashboard from "../../Dashboard"
 import Main from "../../layout/Main"
 import PageHeading from "../../components/main/PageHeading"
 import Table from "../../components/Table"
-import RestApi from "../../../../services/RestApi"
+import IdentificationResource from "../../../../services/IdentificationResource"
 import { useEffect, useRef, useState } from "react"
 import { BsPencilSquare, BsEye } from 'react-icons/bs'
 import {FaTrash} from 'react-icons/fa'
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 
 const Patients = () => {
     const [patients, setPatients] = useState([])
-    const api = new RestApi();
+    const api = new IdentificationResource();
 
 
     const getAllPatients = async () => {
@@ -74,8 +74,8 @@ const Patients = () => {
             {/* <Main> */}
                 < PageHeading heading="Patients" stepName="" />
                 <Table btnName="Ajouter un patient">
-                    <table className="table">
-                        <thead>
+                    <table className="table text-start">
+                        <thead >
                             <tr className="table-light text-uppercase">
                                 <th className="fw-normal">nom</th>
                                 <th className="fw-normal">Prenom</th>
