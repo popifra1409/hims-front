@@ -44,16 +44,16 @@ label {
   margin-bottom: 15px;
 }
 
-.top-bar {
-  position: fixed;
+/* .top-bar { */
+  /* position: fixed;
   top: 15px;
   left: 80px;
-  width: 93%;
+  width: 93%; */
   /* z-index: 1; */
-  background-color: white;
+  /* background-color: rgb(255, 251, 251);
   box-shadow: -5px 2px 15px rgb(214, 212, 212), 5px 2px 15px rgb(214, 212, 212);
-  margin-bottom: 15px;
-}
+  margin-bottom: 15px; */
+/* } */
 
 .test {
   margin: 7px auto;
@@ -130,24 +130,7 @@ label {
   transition: all 1s ease;
 }
 
-.show-lg-side-bar {
-  width: 5%;
-  height: 98%;
-  background-color: white;
-  box-shadow: 0px 5px 15px rgb(214, 212, 212);
-  position: fixed;
-  overflow: hidden auto;
-  left: 5px;
-  top: 5px;
-  transition: all 1s ease;
-}
 
-/* 
-.show-side-bar {
-  width: 0%;
-  background-color: white;
-  transition: all 1s ease;
-} */
 
 .prev-form {
   position: absolute;
@@ -216,16 +199,7 @@ label {
   /* white-space: nowrap; */
 }
 
-.active-nav-link {
-  margin: -16px 0 30px -35px;
-  padding: 10px 2px;
-  background-color: rgb(10, 88, 202);
-  box-shadow: 15px 15px 7px rgb(189, 209, 240);
-  border-radius: 3px;
-  color: white !important;
-}
-
-.nav-link:hover {
+.nav-link:hover ,.active-nav-link{
   /* color: white; */
   margin: -16px 0 30px -35px;
   padding: 10px 2px;
@@ -235,6 +209,7 @@ label {
   transition: all .5s ease-in-out;
   color: white !important;
 }
+
 
 .nav-link-icons {
   margin-right: 10px;
@@ -351,7 +326,58 @@ label {
 }
 
 
+
 /***************************** MEDIA QUERY *****************************************/
+@media screen and (min-width:1264px) and (max-width:1366px){
+  .d-close-btn{
+    display: none;
+  }
+  .show-side-bar {
+    z-index: 2;
+    width: 15%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0px 5px 15px rgb(214, 212, 212);
+    position: fixed;
+    overflow: hidden auto;
+    transition: all 1s ease;
+    left: 0;
+  }
+}
+@media screen and (min-width:769px) and (max-width:1263px){
+   body{
+    overflow-x: hidden;
+   }
+
+   /* side bar start */
+  .sidebarArea {
+    width: 0;
+  }
+
+  .fixed-top-bar {
+    width: 98%;
+    top: 0;
+    left: 0px;
+    margin: 5px;
+  }
+
+  .show-side-bar {
+    z-index: 2;
+    width: 20%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0px 5px 15px rgb(214, 212, 212);
+    position: fixed;
+    overflow: hidden auto;
+    transition: all 1s ease;
+    left: 0;
+  }
+  .d-close-btn{
+    display: inline-block;
+  }
+}
+
+
 @media screen and (max-width:768px) {
   body {
     overflow-x: hidden;
@@ -384,12 +410,6 @@ label {
     margin: 5px;
   }
 
-  /* .top-bar {
-    width: 98%;
-    top: 0;
-    left: 0px;
-    margin: 5px;
-  } */
 
   /* navbar end */
 
@@ -406,6 +426,9 @@ label {
   .about {
     width: 100%;
     margin-top: 15px;
+  }
+  .d-close-btn{
+    display: inline-block;
   }
 
 }

@@ -5,15 +5,15 @@ import { Collapse } from "bootstrap"
 import Main from "./layout/Main"
 const Dashboard = (props) => {
     // const [toggleSideBar, setToggleSideBar] = useState(false)
-   const [collapse,setCollapse] = useState()
+   const [collapse,setCollapse] = useState(false)
     const setCollapseSideBar = (data) => {
           setCollapse(data)
-        // console.log(collapse)
+        console.log('through dashboard' + collapse )
     }
 
     return (
         <div className="pageWrapper">
-            <SideBar toggle={collapse} onToggleSideBar={setCollapseSideBar} />
+            <SideBar toggle={collapse} />
             <NavBar onToggleSideBar={setCollapseSideBar} />
             <Main toggle={collapse}>
                 {props.children}

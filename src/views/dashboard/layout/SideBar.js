@@ -14,12 +14,13 @@ import $ from 'jquery';
 import { useState } from 'react';
 
 
-const SideBar = ({ toggle,onToggleSideBar}) => {
+const SideBar = ({ toggle, onToggleSideBar }) => {
     const [toggleSideBar, setToggleSideBar] = useState(false)
     const setCollapseSideBar = () => {
         setToggleSideBar(!toggleSideBar)
-        onToggleSideBar(!toggleSideBar)
-    }
+        document.getElementById('sidebar').style.display = 'none'
+        console.log('To sidebar  '+toggleSideBar)
+    } 
     $(function () {
         $('.collapseHospitalisation').on('mouseleave ', function () {
             $('#collapible-block').slideUp('slow')
@@ -28,16 +29,23 @@ const SideBar = ({ toggle,onToggleSideBar}) => {
             $('#collapible-block').slideDown('slow')
         })
 
-
+        // close sideBar
+        $('#close').on('click',()=>{
+            $('#sidebar').removeClass('show-side-bar')
+        })
 
     }
     )
 
+    const toggleNavState = () => {
+        
+    }
+
     return (
         // sidebar
-        <aside id='sidebar' className={`${toggle? 'show-side-bar show-lg-side-bar':'sidebarArea'}`} style={{transition:'all 1s ease'}}>
+        <aside id='sidebar' className="sidebarArea" style={{ transition: 'all 1s ease' }}>
             <div className=''>
-                {toggle && <span onClick={() => setCollapseSideBar()} className='text-black position-absolute fs-3 fw-bold cursor-pointer close d-lg-none' style={{ top: '0', right: '15px' }}>x</span>}
+                <span id='close' className='text-black position-absolute fs-3 fw-bold cursor-pointer d-close-btn' style={{ top: '0', right: '15px' }}>x</span>
                 <div className="text-center p-1 ">
                     <h1 className="mt-1 p-4 fs-3 fst-italic fw-normal cursor-pointer border border-primary rounded text-uppercase">himasys</h1>
                 </div>
@@ -45,7 +53,7 @@ const SideBar = ({ toggle,onToggleSideBar}) => {
                     <ul className="nav-list">
                         {/* module caption */}
                         <div className="nav-caption fw-light mt-4"></div>
-                        <li ><Link to="/dashboard" className="nav-link"><BsFillHouseFill className='nav-link-icons' />Tableau de bord</Link></li>
+                        <li onClick={toggleNavState}><Link to="/dashboard" id='dashboard-nav-link' className="nav-link"><BsFillHouseFill className='nav-link-icons' />Tableau de bord</Link></li>
                         {/* module caption */}
                         <div className="nav-caption fw-light mt-0 ">Pharmacie</div>
                         <li ><Link to="/dashboard/listeProduit" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' /> Produits</Link></li>
@@ -57,11 +65,10 @@ const SideBar = ({ toggle,onToggleSideBar}) => {
                         <li ><Link to="/dashboard/listeBonCommandeInterne" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Bon commande interne</Link></li>
                         <li ><Link to="/dashboard/listeLivraisonInterne" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Livraison interne</Link></li>
                         <li ><Link to="/dashboard/listeReceptionInterne" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Reception interne</Link></li>
-                        <li ><Link to="/dashboard/patients" className="nav-link"><BsPeopleFill className='nav-link-icons' />Patients</Link></li>
                         <div className="nav-caption fw-light mt-0">Admission</div>
                         <li ><Link to="/dashboard/parametres" className="nav-link"><BsFillGearFill className='nav-link-icons' />Paramètres</Link></li>
                         <div className="nav-caption fw-light mt-0">Acceuil et facturation</div>
-                        <li ><Link to="/dashboard/patients" className="nav-link"><BsPeopleFill className='nav-link-icons' />Patients</Link></li>
+                        <li ><Link onClick={toggleNavState} to="/dashboard/patients" id='patient-nav-link' className="nav-link"><BsPeopleFill className='nav-link-icons' />Patients</Link></li>
                         <li className='collapseHospitalisation nav-link' ><FaProcedures className='nav-link-icons' />Hospitalisation
                             <ul className='nav-list collapible-block' id='collapible-block' style={{ marginLeft: '0px' }}>
                                 <li className='nav-item my-3'><Link className='text-uppercase' to='/dashboard/hospitalisation'>Admission</Link></li>

@@ -7,19 +7,20 @@ const NavBar = ({onToggleSideBar }) => {
     const setCollapseSideBar = () => {
         setToggleSideBar(!toggleSideBar)
         onToggleSideBar(!toggleSideBar)
+        console.log('from Navbar '+ toggleSideBar)
     }
 
     $(function(){
         $('#btn').on('click',function(){
-            $('.main-block').toggleClass('expand')
+            $('.sidebarArea').addClass('show-side-bar')
         })
     })
     return (
         //Navbar
-        <nav className={`navbar navbar-expand ${toggleSideBar? 'top-bar':'fixed-top-bar'} rounded`} style={{transition:'all 1s ease'}}>
+        <nav className={`navbar navbar-expand top-bar fixed-top-bar rounded`} style={{transition:'all 1s ease'}}>
             <div className='container-fluid'>
                 <div className="navbar-brand ">
-                    <button id='btn' onClick={() => setCollapseSideBar()} className="btn btn-light active " style={{width:'3rem'}}><FaBars /></button>
+                    <button id='btn' className="btn btn-light active " style={{width:'3rem'}}><FaBars /></button>
                 </div>
                 <div className='text-white  user-profil'>
                     <div className='notification-bell text-black'>
