@@ -4,7 +4,7 @@ import About from './About'
 const Main = (props, { toggle }) => {
     return (
         <>
-            < div className={`main-block`} >
+            < div className={`main-block mt-4`} >
                 <div className={`main-content`}>
                     {/* main content */}
                     <main className=''>
