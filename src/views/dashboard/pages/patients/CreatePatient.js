@@ -1,13 +1,18 @@
 import Dashboard from "../../Dashboard"
 import PageHeading from "../../components/main/PageHeading"
-import { useEffect, useState,useRef } from "react"
+import { useEffect, useState, useRef } from "react"
+import { Close } from "@mui/icons-material"
+import { Snackbar, IconButton, Button } from "@mui/material"
 import IdentificationResource from "../../../../services/IdentificationResource"
 import { AiOutlineSave } from "react-icons/ai"
 import { BsCheck, BsPencilSquare } from 'react-icons/bs'
 import { FaTrash, FaPlus, FaTimes } from 'react-icons/fa'
 
 const CreatePatient = () => {
-    var age;
+    var age; 
+    const [open, setOpen] = useState(false);
+    const [message,setMessage] = useState('')
+    // state du patient
     const [patientAge, setPatientAge] = useState(0)
     const [patientBirthDay, setPatientBirthDay] = useState('')
     const [patientFirstName, setPatientFirstName] = useState('')
@@ -62,7 +67,11 @@ const CreatePatient = () => {
         }
         console.log(data)
 
-        return api.savePatient(data).then((res)=>console.log(res))
+        return api.savePatient(data).then((res) => {
+            setOpen(!open)
+            setMessage(res.data.message.message)
+            console.log(message)
+        })
         // clear field
         // clearField()
     }
@@ -133,30 +142,30 @@ const CreatePatient = () => {
     }
 
     // Calcule l'age
-    const computeAge = () => {
-        let dob = new Date(patientBirthDayRef.current.value)
-        let dobString = patientBirthDayRef.current.value
+    // const computeAge = () => {
+    //     let dob = new Date(patientBirthDayRef.current.value)
+    //     let dobString = patientBirthDayRef.current.value
 
-        //calculate month difference from current date in time.
-        var month_diff = Date.now() - dob.getTime();
-        //convert the calculated difference in date format.
-        var age_dt = new Date(month_diff);
-        //extract year from date.
-        var year = age_dt.getUTCFullYear();
-        var dd = age_dt.getDay()
-        var mm = age_dt.getMonth() + 1
-        var yy = dob.getFullYear()
+    //     //calculate month difference from current date in time.
+    //     var month_diff = Date.now() - dob.getTime();
+    //     //convert the calculated difference in date format.
+    //     var age_dt = new Date(month_diff);
+    //     //extract year from date.
+    //     var year = age_dt.getUTCFullYear();
+    //     var dd = age_dt.getDay()
+    //     var mm = age_dt.getMonth() + 1
+    //     var yy = dob.getFullYear()
 
-        if (dd < 10) dd = '0' + dd;
-        if (mm < 10) mm = '0' + mm;
+    //     if (dd < 10) dd = '0' + dd;
+    //     if (mm < 10) mm = '0' + mm;
 
-        age = Math.abs(year - 1970)
+    //     age = Math.abs(year - 1970)
 
-        patientAgeRef.current.value = age
-        const f = dd + '/' + mm + '/' + yy
-        console.log(mm)
-        // console.log()
-    }
+    //     patientAgeRef.current.value = age
+    //     const f = dd + '/' + mm + '/' + yy
+    //     console.log(mm)
+    //     // console.log()
+    // }
 
     const computeBirthDate = (value) => {
         let age = value
@@ -182,26 +191,47 @@ const CreatePatient = () => {
 
     }
 
-    // return api.savePatient(data)
+    // state pour ouvrir et fermer le composant de message)
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        console.log("message" + message)
+        setOpen(false);
+    };
+
+    const action = (
+        <>
+            <Button color="secondary" size="small" onClick={handleClose}>
+                UNDO
+            </Button>
+            <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+            >
+                <Close fontSize="small" />
+            </IconButton>
+        </>
+    );
 
 
-    // const Btn = () => {
-    //     if (step > 1) {
-    //         return (
-    //             <div>
-    //                 <input onClick={() => setStep(step + 1)} className="next-form p-2 bg-primary border-0 rounded text-white " type="button" name="to_next_step_2" value="Suivant" />
-    //             </div>
-    //         )
-    //     }
-    //     else { 
-    //         return (
-
-    //         );
-    //     }
-    // }
     return (
         <Dashboard>
             < PageHeading heading="Patients" stepName="Nouveau " />
+
+            <Snackbar
+                open={open}
+                autoHideDuration={6000}
+                onClose={handleClose}
+                message={message}
+                action={action}
+            />
             <div className="main-content-child">
                 <div className="row">
                     {/* patient create forms */}

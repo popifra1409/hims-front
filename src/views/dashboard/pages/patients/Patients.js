@@ -68,8 +68,8 @@ const Patients = () => {
     }
 
     // supprimer patient
-    const deletePatient = (id) => {
-        return api.deletePatient(id)
+    const deletePatient = async (id) => {
+        return await api.deletePatient(id)
     }
 
     useEffect(() => {
@@ -115,6 +115,7 @@ const Patients = () => {
     //         <link to="/" />
     //     )
     // }
+
 
     return (
         <Dashboard>
