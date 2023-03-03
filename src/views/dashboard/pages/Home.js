@@ -32,7 +32,7 @@ const Home = () => {
     return (
         <Dashboard>
             <div className="d-flex flex-row justify-content-between">
-                <Paper variant="outlined" className="mt-2 p-1 ps-1 bg-light rounded" sx={{ maxWidth: 750 }}>
+                <Paper variant="outlined" className="mt-2 p-1 bg-light rounded" sx={{ maxWidth: 740 }}>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
                         <Grid item xl={6}
                             className="p-1 m-3 border rounded" >
@@ -194,7 +194,7 @@ const Home = () => {
                         </Grid>
                     </Grid>
                 </Paper>
-                <Paper variant="outlined" className="mt-2 ps-1 bg-light rounded" sx={{width:'400px' }}>
+                <Paper variant="outlined" className="mt-2 ps-1 bg-light rounded" sx={{width:'350px' }}>
                     <Chart
                         chartType="PieChart"
                         width="100%"
