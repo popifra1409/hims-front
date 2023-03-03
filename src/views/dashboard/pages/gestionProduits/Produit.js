@@ -9,7 +9,6 @@ import { BsCheckLg } from 'react-icons/bs'
 const Produit = () => {
     return (
         <Dashboard>
-            <Main>
                 < PageHeading heading="Produit - Nouveau" />
                 <div className='container'>
                     <form>
@@ -349,7 +348,6 @@ const Produit = () => {
                     </form>
 
                 </div>
-            </Main>
         </Dashboard>
 
     )

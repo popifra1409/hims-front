@@ -19,18 +19,18 @@ const SideBar = ({ toggle, onToggleSideBar }) => {
     const setCollapseSideBar = () => {
         setToggleSideBar(!toggleSideBar)
         document.getElementById('sidebar').style.display = 'none'
-        console.log('To sidebar  '+toggleSideBar)
-    } 
+        console.log('To sidebar  ' + toggleSideBar)
+    }
     $(function () {
-        $('.collapseHospitalisation').on('mouseleave ', function () {
-            $('#collapible-block').slideUp('slow')
-        }).css('cursor', 'pointer')
-        $('.collapseHospitalisation').on('mouseenter ', function () {
-            $('#collapible-block').slideDown('slow')
-        })
+        // $('.collapseHospitalisation').on('mouseleave ', function () {
+        //     $('#collapible-block').slideUp('slow')
+        // }).css('cursor', 'pointer')
+        // $('.collapseHospitalisation').on('mouseenter ', function () {
+        //     $('#collapible-block').slideDown('slow')
+        // })
 
         // close sideBar
-        $('#close').on('click',()=>{
+        $('#close').on('click', () => {
             $('#sidebar').removeClass('show-side-bar')
         })
 
@@ -38,7 +38,7 @@ const SideBar = ({ toggle, onToggleSideBar }) => {
     )
 
     const toggleNavState = () => {
-        
+
     }
 
     return (
@@ -54,29 +54,29 @@ const SideBar = ({ toggle, onToggleSideBar }) => {
                         {/* module caption */}
                         <div className="nav-caption fw-light mt-4"></div>
                         <li onClick={toggleNavState}><Link to="/dashboard" id='dashboard-nav-link' className="nav-link"><BsFillHouseFill className='nav-link-icons' />Tableau de bord</Link></li>
-                        {/* module caption */}
+                        {/* <div className="nav-caption fw-light mt-0">Admission</div>
+                        <li ><Link to="/dashboard/parametres" className="nav-link"><BsFillGearFill className='nav-link-icons' />Paramètres</Link></li> */}
+                        <div className="nav-caption fw-light mt-0">Acceuil et facturation</div>
+                        <li ><Link onClick={toggleNavState} to="/dashboard/patients" id='patient-nav-link' className="nav-link"><BsPeopleFill className='nav-link-icons' />Patients</Link></li>
+                        <li ><Link className='collapseHospitalisation nav-link' to='/dashboard/hospitalisation' ><FaProcedures className='nav-link-icons' />Hospitalisation
+                            {/* <ul className='nav-list collapible-block' id='collapible-block' style={{ marginLeft: '0px' }}>
+                                <li className='nav-item my-3'><Link className='text-uppercase' to='/dashboard/hospitalisation'>Admission</Link></li>
+                                <li className='nav-item my-3'> <Link className='text-uppercase' to="/dashboard/hospitalisation/avis">avis</Link></li>
+                                <li className='nav-item my-3'><Link className='text-uppercase' to='/dashboard/hospitalisation/transfer'>transfer</Link></li>
+                            </ul> */}
+                        </Link>
+                        </li>
                         <div className="nav-caption fw-light mt-0 ">Pharmacie</div>
+                        {/* module caption */}
                         <li ><Link to="/dashboard/listeProduit" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' /> Produits</Link></li>
-                        <li ><Link to="/dashboard/listeFamilleProduit" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' /> Famille Produit</Link></li>
+                        {/* <li ><Link to="/dashboard/listeFamilleProduit" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' /> Famille Produit</Link></li>
                         <li ><Link to="/dashboard/listeCategorieProduit" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Catégories produit</Link></li>
                         <li ><Link to="/dashboard/listeFournisseur" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Fournisseurs</Link></li>
                         <li ><Link to="/dashboard/listeBonCommandeFournisseur" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Bon commande fournisseur</Link></li>
                         <li ><Link to="/dashboard/listeFactureFournisseur" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Facture fournisseur</Link></li>
                         <li ><Link to="/dashboard/listeBonCommandeInterne" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Bon commande interne</Link></li>
                         <li ><Link to="/dashboard/listeLivraisonInterne" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Livraison interne</Link></li>
-                        <li ><Link to="/dashboard/listeReceptionInterne" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Reception interne</Link></li>
-                        <div className="nav-caption fw-light mt-0">Admission</div>
-                        <li ><Link to="/dashboard/parametres" className="nav-link"><BsFillGearFill className='nav-link-icons' />Paramètres</Link></li>
-                        <div className="nav-caption fw-light mt-0">Acceuil et facturation</div>
-                        <li ><Link onClick={toggleNavState} to="/dashboard/patients" id='patient-nav-link' className="nav-link"><BsPeopleFill className='nav-link-icons' />Patients</Link></li>
-                        <li className='collapseHospitalisation nav-link' ><FaProcedures className='nav-link-icons' />Hospitalisation
-                            <ul className='nav-list collapible-block' id='collapible-block' style={{ marginLeft: '0px' }}>
-                                <li className='nav-item my-3'><Link className='text-uppercase' to='/dashboard/hospitalisation'>Admission</Link></li>
-                                <li className='nav-item my-3'> <Link className='text-uppercase' to="/dashboard/hospitalisation/avis">avis</Link></li>
-                                <li className='nav-item my-3'><Link className='text-uppercase' to='/dashboard/hospitalisation/transfer'>transfer</Link></li>
-                            </ul>
-                        </li>
-
+                        <li ><Link to="/dashboard/listeReceptionInterne" className="nav-link"><MdOutlineLocalPharmacy className='nav-link-icons' />Reception interne</Link></li> */}
                         <div className="nav-caption fw-light mt-0">Administration</div>
                         <li ><Link to="/dashboard/parametres" className="nav-link"><BsFillGearFill className='nav-link-icons' />Paramétrages</Link></li>
                         <li ><Link to="/dashboard/tiersPayeurs" className="nav-link"><BsWalletFill className='nav-link-icons' />Tiers payeurs</Link></li>

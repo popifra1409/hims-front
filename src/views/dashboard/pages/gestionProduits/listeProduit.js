@@ -12,7 +12,6 @@ import { MdDeleteOutline } from 'react-icons/md'
 const listeProduit = () => {
     return (
         <Dashboard>
-            <Main>
                 < PageHeading heading="Liste des produits" />
                 <div className="container ">
                     <div className="jumbotron ">
@@ -96,7 +95,6 @@ const listeProduit = () => {
 
                     </div>
                 </div>
-            </Main>
         </Dashboard>
     )
 }

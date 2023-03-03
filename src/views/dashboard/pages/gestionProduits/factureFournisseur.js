@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom'
 const factureFournisseur = () => {
     return (
         <Dashboard>
-            <Main>
                 <PageHeading heading="Facture fournisseur" />
                 <div className="container">
                     <form>
@@ -233,7 +232,6 @@ const factureFournisseur = () => {
 
                     </form>
                 </div>
-            </Main>
         </Dashboard>
     )
 }

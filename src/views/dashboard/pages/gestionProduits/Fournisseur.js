@@ -10,7 +10,6 @@ import React from 'react'
 const Founisseur = () => {
   return (
     <Dashboard>
-      <Main>
         <PageHeading heading="Fournisseur" />
 
         <div className="container">
@@ -154,7 +153,6 @@ const Founisseur = () => {
           </form>
 
         </div>
-      </Main>
     </Dashboard>
   )
 }

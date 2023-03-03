@@ -11,7 +11,6 @@ import React from 'react'
 const LivraisonInterne = () => {
     return (
         <Dashboard>
-            <Main>
                 <PageHeading heading="Livraison interne" />
                 <div className="container">
                     <form>
@@ -253,11 +252,6 @@ const LivraisonInterne = () => {
 
                     </form>
                 </div>
-
-
-
-
-            </Main>
         </Dashboard>
     )
 }

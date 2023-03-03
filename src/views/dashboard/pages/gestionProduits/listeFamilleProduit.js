@@ -10,7 +10,6 @@ import React from 'react'
 const listeFamilleProduit = () => {
     return (
         <Dashboard>
-            <Main>
                 < PageHeading heading="Liste Famille produit" />
                 <div className="container ">
                     <div className="jumbotron ">
@@ -88,7 +87,6 @@ const listeFamilleProduit = () => {
 
                     </div>
                 </div>
-            </Main>
         </Dashboard>
     )
 }

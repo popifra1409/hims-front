@@ -11,7 +11,6 @@ import React from 'react'
 const listeCategorieProduit = () => {
     return (
         <Dashboard>
-            <Main>
                 <PageHeading heading="Liste categorie produit" />
                 <div className="container ">
                     <div className="jumbotron ">
@@ -93,7 +92,6 @@ const listeCategorieProduit = () => {
 
                     </div>
                 </div>
-            </Main>
         </Dashboard>
     )
 }

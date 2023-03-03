@@ -10,7 +10,6 @@ import React from 'react'
 const listeFactureFournisseur = () => {
     return (
         <Dashboard>
-            <Main>
                 <PageHeading heading="Liste facture fournisseur" />
                 <div className="container ">
                     <form>
@@ -108,7 +107,6 @@ const listeFactureFournisseur = () => {
 
                     </form>
                 </div>
-            </Main>
         </Dashboard>
     )
 }

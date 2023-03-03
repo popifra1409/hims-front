@@ -49,14 +49,14 @@ const Patient = () => {
     const newPatient = {
       adresse, email, patientAge, patientBarCode, patientBirthDay, patientFirstName, patientLastName, patientNationalite, patientPlaceOfBirth, patientProfession, patientReligion, patientSex, telephone
     }
-    //  console.log(newPatient)
+     console.log(newPatient)
     return api.updatePatient(patient.patientId, newPatient)
   }
 
   return (
     <Dashboard>
       {/* <Main> */}
-        <PageHeading heading="Patients" stepName={showUpdateForm ? `${patient.patientId}/ Modifier` : patient.patientId} />
+        <PageHeading heading="Patients" stepName={showUpdateForm ? `${patient.patientId} > Modifier` : patient.patientId} />
         <div className="main-content-child" style={{ display: showUpdateForm ? 'none' : '' }}>
           <div className="row mb-3">
             <div className="col-md-6">

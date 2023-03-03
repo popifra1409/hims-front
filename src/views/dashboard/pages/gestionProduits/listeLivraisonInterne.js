@@ -11,7 +11,6 @@ import { MdDeleteOutline } from 'react-icons/md'
 const listeLivraisonInterne = () => {
     return (
         <Dashboard>
-            <Main>
                 < PageHeading heading="Liste livraison interne" />
 
                 <div className="container ">
@@ -101,7 +100,6 @@ const listeLivraisonInterne = () => {
 
                     </form>
                 </div>
-            </Main>
         </Dashboard>
     )
 }

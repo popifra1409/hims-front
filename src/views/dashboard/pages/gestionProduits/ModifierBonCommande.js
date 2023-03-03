@@ -8,7 +8,6 @@ import { BsCheckLg } from 'react-icons/bs'
 const ModifierBonCommande = () => {
     return (
         <Dashboard>
-            <Main>
                 < PageHeading heading="Bon commande fournisseur" />
                 <div className="container">
                     <form>
@@ -216,7 +215,6 @@ const ModifierBonCommande = () => {
                     </form>
 
                 </div>
-            </Main>
         </Dashboard>
     )
 }

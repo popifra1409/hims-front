@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom'
 const BonCommandeFournisseur = () => {
     return (
         <Dashboard>
-            {/* <Main> */}
                 < PageHeading heading="Bon commande fournisseur" />
                 <div className="container">
                     <form>
@@ -212,7 +211,6 @@ const BonCommandeFournisseur = () => {
                     </form>
 
                 </div>
-            {/* </Main> */}
         </Dashboard>
     )
 }

@@ -12,7 +12,6 @@ import React from 'react'
 const bonCommandeInterne = () => {
     return (
         <Dashboard>
-            <Main>
                 <PageHeading heading="Bon de commande interne" />
                 <div className="container">
                     <form>
@@ -258,11 +257,6 @@ const bonCommandeInterne = () => {
 
                     </form>
                 </div>
-
-
-
-
-            </Main>
         </Dashboard>
     )
 }

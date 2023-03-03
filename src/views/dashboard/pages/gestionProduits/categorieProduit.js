@@ -9,7 +9,6 @@ import { BsSave2 } from 'react-icons/bs'
 const categorieProduit = () => {
     return (
         <Dashboard>
-            <Main>
                 < PageHeading heading="Categorie produit" />
                 <div className='container'>
                     <form>
@@ -43,7 +42,6 @@ const categorieProduit = () => {
 
                     </form>
                 </div>
-            </Main>
         </Dashboard>
     )
 }

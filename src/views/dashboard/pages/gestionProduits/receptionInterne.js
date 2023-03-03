@@ -11,7 +11,6 @@ import React from 'react'
 const receptionInterne = () => {
     return (
         <Dashboard>
-            <Main>
                 <PageHeading heading="Livraison interne" />
                 <div className="container">
                     <form>
@@ -233,11 +232,6 @@ const receptionInterne = () => {
 
                     </form>
                 </div>
-
-
-
-
-            </Main>
         </Dashboard>
     )
 }

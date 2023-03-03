@@ -12,7 +12,6 @@ import { BsCheckLg } from "react-icons/bs"
 const listeReceptionInterne = () => {
     return (
         <Dashboard>
-            <Main>
                 < PageHeading heading="Liste reception interne" />
 
                 <div className="container ">
@@ -120,7 +119,6 @@ const listeReceptionInterne = () => {
 
                     </form>
                 </div>
-            </Main>
         </Dashboard>
     )
 }

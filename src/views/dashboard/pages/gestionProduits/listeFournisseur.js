@@ -10,7 +10,6 @@ import React from 'react'
 const listeFournisseur = () => {
     return (
         <Dashboard>
-            <Main>
                 <PageHeading heading="Liste Fournisseur" />
                 <div className="container ">
                     <div className="jumbotron ">
@@ -89,7 +88,6 @@ const listeFournisseur = () => {
 
                     </div>
                 </div>
-            </Main>
         </Dashboard>
     )
 }

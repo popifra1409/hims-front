@@ -1,10 +1,25 @@
 import Dashboard from "../Dashboard"
 import { useState } from "react";
+import { Chart } from "react-google-charts"
 import dayjs from "dayjs";
 import { Card, Box, Paper, Grid, TextField } from "@mui/material"
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
+
+export const data = [
+    ["Task", "Hours per Day"],
+    ["Dermatology", 11],
+    ["cardiology", 5],
+    ["Neurology", 3], // CSS-style declaration
+];
+
+export const options = {
+    title: "Patients par département",
+    pieHole: 0.3,
+    is3D: false,
+};
+
 const Home = () => {
     const [value, setValue] = useState(dayjs('2022-04-07'))
 
@@ -16,7 +31,7 @@ const Home = () => {
 
     return (
         <Dashboard>
-            <div className="d-flex flex-row gap-1">
+            <div className="d-flex flex-row justify-content-between">
                 <Paper variant="outlined" className="mt-2 p-1 ps-1 bg-light rounded" sx={{ maxWidth: 750 }}>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
                         <Grid item xl={6}
@@ -35,7 +50,7 @@ const Home = () => {
                                 />
                             </LocalizationProvider>
                         </Grid>
-                        <Grid item xl={6} sx={{ marginLeft: -5, }}>
+                        <Grid item xl={6} sx={{ marginLeft: -6, }}>
                             <div className="p-1 d-flex flex-row">
                                 <Grid container columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
                                     <Grid item xl={6} >
@@ -179,8 +194,14 @@ const Home = () => {
                         </Grid>
                     </Grid>
                 </Paper>
-                <Paper variant="outlined" className="mt-2 p-1 ps-1 bg-light rounded" sx={{width:'10%'}}>
-
+                <Paper variant="outlined" className="mt-2 ps-1 bg-light rounded" sx={{width:'400px' }}>
+                    <Chart
+                        chartType="PieChart"
+                        width="100%"
+                        height="400px"
+                        data={data}
+                        options={options}
+                    />
                 </Paper>
             </div>
         </Dashboard>
