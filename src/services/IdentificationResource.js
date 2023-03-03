@@ -4,7 +4,7 @@ class IdentificationResource {
 
     // Lister tout les patients
     getAllPatients = async () => {
-        return await http.get('/hims/patients')
+        return await http.get('/hims/patients/all')
     }
 
     // getPatientById
