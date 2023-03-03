@@ -24,7 +24,7 @@ class IdentificationResource {
 
     // Supprimer un patient
     deletePatient = (id) => {
-       console.log(id)
+       return http.delete(`/hims/patients/delete/${id}`)
     }
 }
 
