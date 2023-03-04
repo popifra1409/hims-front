@@ -3,7 +3,7 @@ import SearchBar from './SearchBar'
 import Pagination from './Pagination'
 
 const Table = (props) => (
-    <div className="main-content-child">
+    <div className="main-content-child p-2">
         <div className="d-flex justify-between ">
             {/* pagination */}
             <Pagination/>
@@ -14,7 +14,7 @@ const Table = (props) => (
                 <AddButton btnName={props.btnName}/>
             </div>
         </div>
-        <div className="mt-3 table-responsive" style={{ marginLeft: '-13px' }}>
+        <div className="mt-3 table-responsive" style={{ marginLeft: '13px' }}>
             {/* table */}
            {props.children}
         </div>

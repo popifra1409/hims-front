@@ -1,7 +1,7 @@
 
 const UpdateForm = (props) => {
     return (
-        <div className="main-content-child">
+        <div className="main-content-child p-5 border">
             {props.children}
         </div>
     )

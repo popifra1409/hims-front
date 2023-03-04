@@ -1,7 +1,7 @@
 
 const Pagination = () => {
     return (
-        <div className="">
+        <div className="ms-3">
             <div className="paginator">
                 <span className="me-1">Show</span>
                 <select name='paginate' className='p-1 border rounded'>

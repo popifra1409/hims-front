@@ -69,7 +69,8 @@ const Patients = () => {
 
     // supprimer patient
     const deletePatient = async (id) => {
-        return await api.deletePatient(id)
+        await api.deletePatient(id)
+        setPatients(patients.filter((patient)=> patient.id !== id))
     }
 
     useEffect(() => {
@@ -134,13 +135,9 @@ const Patients = () => {
                             <th className="fw-normal">actions</th>
                         </tr>
                     </thead>
-
                     <List />
-
                 </table>
-                <div className="p-2" style={{ position: 'relative' }}> <updatePatient /></div>
-
-            </Table>
+            </Table> 
             {/* </Main> */}
         </Dashboard>
     )
