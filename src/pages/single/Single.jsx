@@ -5,7 +5,7 @@ import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import BatimentService from "../../service/BatimentService";
+import BatimentService from "../../services/BatimentService";
 
 
 const Single = () => {

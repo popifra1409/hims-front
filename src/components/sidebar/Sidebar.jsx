@@ -1,16 +1,13 @@
 import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
-import StoreIcon from "@mui/icons-material/Store";
-import InsertChartIcon from "@mui/icons-material/InsertChart";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import LocalHospitalOutlinedIcon from '@mui/icons-material/LocalHospitalOutlined';
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
@@ -27,52 +24,30 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <p className="title">////</p>
-         <Link to="/" style={{ textDecoration: "none" }}>
-         <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-          </li>
-         </Link>
-          <p className="title">Pharmarcie</p>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          <p className="title">MENU PRINCIPAL</p>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <li>
+              <DashboardIcon className="icon" />
+              <span>Tableau de bord</span>
+            </li>
+          </Link>
+          <p className="title">Accueil</p>
+          <Link to="/identification/patients" style={{ textDecoration: "none" }}>
             <li>
               < PersonOutlineIcon className="icon" />
-              <span>Produits</span>
+              <span>Patient</span>
             </li>
           </Link>
           <Link to="/products" style={{ textDecoration: "none" }}>
             <li>
-              <StoreIcon className="icon" />
-              <span>Products</span>
+              <GroupOutlinedIcon className="icon" />
+              <span>Groupe patient</span>
             </li>
           </Link>
-         <Link to={'/ListCategorie'} style={{ textDecoration: "none" }}>
-                <li>
-                  <CreditCardIcon className="icon" />
-                  <span>Categories</span>
-                </li>
-          </Link>
-
-          <Link to={"/ListPatients"} style={{ textDecoration: "none" }}>
+          <p className="title">Paramétrage</p>
           <li>
-            <LocalShippingIcon className="icon" />
-            <span>Patients</span>
-          </li>
-          </Link>
-          <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Stats</span>
-          </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
-          </li>
-          <p className="title">SERVICE</p>
-          <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>System Health</span>
+            <LocalHospitalOutlinedIcon className="icon" />
+            <span>Etablissement</span>
           </li>
           <li>
             <PsychologyOutlinedIcon className="icon" />
@@ -82,7 +57,7 @@ const Sidebar = () => {
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
           </li>
-          <p className="title">USER</p>
+          <p className="title">Utilisateurs</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
@@ -91,14 +66,6 @@ const Sidebar = () => {
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
           </li>
-
-          <Link to={'/famille'} style={{ textDecoration: "none" }}>
-          <li>
-            <ExitToAppIcon className="icon" />
-            <span>Famille</span>
-          </li>
-          </Link>
-         
         </ul>
       </div>
       <div className="bottom">

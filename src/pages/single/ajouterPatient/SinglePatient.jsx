@@ -5,7 +5,7 @@ import Chart from "../../../components/chart/Chart";
 import List from "../../../components/table/Table";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import PatientService from "../../../service/PatientService";
+import PatientService from "../../../services/PatientService";
 
 
 const SinglePatient = () => {

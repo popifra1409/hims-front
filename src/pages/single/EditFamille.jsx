@@ -5,7 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import React from 'react'
-import BatimentService from "../../service/BatimentService";
+import BatimentService from "../../services/BatimentService";
 
 const EditFamille = () => {
 

@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { useMediaQuery } from "@mui/material";
 import { Box, Button, TextField } from '@mui/material'
 import React from 'react'
-import PatientService from '../../../service/PatientService';
+import PatientService from '../../../services/PatientService';
 import { useNavigate } from 'react-router-dom';
 
 

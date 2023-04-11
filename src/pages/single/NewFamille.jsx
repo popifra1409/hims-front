@@ -5,7 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
 import {  useNavigate } from "react-router-dom";
 import React from 'react'
-import BatimentService from "../../service/BatimentService";
+import BatimentService from "../../services/BatimentService";
 
 const NewFamille = () => {
 
