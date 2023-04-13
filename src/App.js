@@ -6,6 +6,7 @@ import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";  
+import SinglePatient from "./pages/identification/patient/singlePatient";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -29,8 +30,8 @@ function App() {
             {/* identification resources */}
             <Route path="patients">
               <Route index element={<ListPatients />} />
-              {/* <Route path=":patientid" element={<SinglePatient />} />
-              <Route
+              <Route path=":patientid" element={<SinglePatient />} />
+              {/* <Route
                 path="newpatient"
                 element={<NewPatient title="Add New Patient" />}
               />

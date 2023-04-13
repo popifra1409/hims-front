@@ -9,8 +9,8 @@ class PatientAPI {
     };
 
     //get a single patient
-    getPatientsById = async (idPatient) =>{
-        return await  axios.get(Patient_API_BASE_URL + idPatient);
+    getPatientsById = async (patientId) =>{
+        return await  axios.get(Patient_API_BASE_URL + patientId);
     };
 
     //create a patient

@@ -22,13 +22,13 @@ const PatientDatatable = () => {
   const actionColumn = [
     {
       field: "action",
-      headerName: "Actions",
-      width: 200,
+      headerName: "ACTIONS",
+      width: 150,
       renderCell: (params) => {
         return (
           <div className="cellAction">
 
-            <Link to={`/identification/patients/${params.id}/`} style={{ textDecoration: "none" }}>
+            <Link to={`/identification/patients/${params.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
