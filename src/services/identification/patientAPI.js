@@ -14,7 +14,7 @@ class PatientAPI {
     };
 
     //create a patient
-    postPatients = async(patient) =>{
+    addPatient = async(patient) =>{
         return await axios.post(Patient_API_BASE_URL + "save",  patient);
     };
 }

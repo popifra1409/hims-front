@@ -7,6 +7,7 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";  
 import SinglePatient from "./pages/identification/patient/singlePatient";
+import NewPatient from "./pages/identification/patient/newpatient";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -31,24 +32,16 @@ function App() {
             <Route path="patients">
               <Route index element={<ListPatients />} />
               <Route path=":patientid" element={<SinglePatient />} />
-              {/* <Route
-                path="newpatient"
-                element={<NewPatient title="Add New Patient" />}
-              />
               <Route
+                path="newpatient"
+                element={<NewPatient title="Nouveau Patient" />}
+              />
+              {/* <Route
                 path="update/:patientid"
                 element={<UpdatePatient title="Update Patient" />}
               /> */}
             </Route>
           </Route>
-          {/* <Route path="/famille" element={<Famille />} />
-            <Route path="/ListCategorie" element={<ListCategorie />} />
-            <Route path="/ListCategorie/Single/:idBatiment" element={<Single />} />
-            <Route path="/Single/EditFamille/:idBatiment" element={<EditFamille />} />
-            <Route path="/ListCategorie/NewFamille" element={<NewFamille />} />
-            <Route path="/ListPatients" element={<ListPatients />} />
-            <Route path="/ListPatients/AddPatients" element={<AddPatients />} />
-            <Route path="/ListPatients/SinglePatient/:idPatient" element={<SinglePatient />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

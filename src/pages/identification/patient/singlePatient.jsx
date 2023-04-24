@@ -10,7 +10,7 @@ import { QRCodeSVG } from "qrcode.react";
 
 const SinglePatient = () => {
     const { patientid } = useParams();
- 
+
     const [patient, setPatient] = useState({
         patientId: patientid,
         patientBarCode: "",
@@ -34,7 +34,7 @@ const SinglePatient = () => {
             let pat = res.data.data;
             setPatient({
                 patientId: pat.patientId,
-                patientBarCode:res.data.patientBarCode,
+                patientBarCode: res.data.patientBarCode,
                 patientFingerPrints: "",
                 patientLastName: pat.patientLastName,
                 patientFirstName: pat.patientFirstName,
@@ -75,7 +75,7 @@ const SinglePatient = () => {
                                 <div className="detailItem">
                                     <span className="itemKey"></span>
                                     <span className="itemValue">
-                                      {/*   <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrCodeString}`} /> */}
+                                        {/*   <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrCodeString}`} /> */}
                                         <QRCodeSVG value={patient.patientBarCode} size={150} />
                                     </span>
                                 </div>
@@ -123,12 +123,9 @@ const SinglePatient = () => {
                         </div>
                     </div>
                     <div className="right">
-                        <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
+                        <h1 className="title">Les dernières factures</h1>
+                        {/* <ListPatients /> */}
                     </div>
-                </div>
-                <div className="bottom">
-                    <h1 className="title">Last Transactions</h1>
-                    {/* <ListPatients /> */}
                 </div>
             </div>
         </div>
