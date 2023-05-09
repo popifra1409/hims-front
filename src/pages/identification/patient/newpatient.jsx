@@ -70,28 +70,11 @@ const NewPatient = ({ title }) => {
         return birthDate;
     };
 
-<<<<<<< HEAD
     const handleAgeChange = (e) => {
         const patientAge = e.target.value ? parseInt(e.target.value, 10) : '';
         const patientBirthDay = patientAge ? calculateDob(patientAge) : '';
         console.log('affichage age' + patientBirthDay);
         setValues({ ...values, patientAge, patientBirthDay }); 
-=======
-   /*  const handleAgeChange = (e) => {
-        const patientAge = e.target.value ? parseInt(e.target.value, 10) : '';
-        const patientBirthDay = patientAge ? calculateDob(patientAge) : '';
-        console.log('affichage age' + patientBirthDay);
-        setValues({ ...values, patientAge, patientBirthDay });
-    }; */
-
-    const handleAgeChange = (value) => {
-        //if (e.target && e.target.value !== undefined) {
-            const patientAge = value ? parseInt(value, 10) : '';
-            const patientBirthDay = patientAge ? calculateDob(patientAge) : '';
-            console.log('affichage age' + patientBirthDay);
-            setValues({ ...values, patientAge, patientBirthDay });
-      //  }
->>>>>>> f79f3a4bd9ad99cca809a35b0176290a01026f33
     };
 
     //fin calcul
@@ -160,11 +143,7 @@ const NewPatient = ({ title }) => {
                                                     label="Age du patient"
                                                     type="number"
                                                     value={values.patientAge}
-<<<<<<< HEAD
                                                     onChange={handleAgeChange}
-=======
-                                                    onChange={handleChange}
->>>>>>> f79f3a4bd9ad99cca809a35b0176290a01026f33
                                                 />
                                             </Grid>
                                             <Grid item xs={4}>
