@@ -68,6 +68,25 @@ const Sidebar = () => {
             </li>
           </Link>
 
+          <p className="title">Admission</p>
+          <Link to="/identification/patients" style={{ textDecoration: "none" }}>
+            <li>
+              < LocalHotelIcon className="icon" />
+              <span>Hospitalisation</span>
+            </li>
+          </Link>
+          <Link to="/products" style={{ textDecoration: "none" }}>
+            <li>
+              < LocalHospitalIcon className="icon" />
+              <span>Urgence</span>
+            </li>
+          </Link>
+          <Link to="/products" style={{ textDecoration: "none" }}>
+            <li>
+              <AirlineSeatFlatIcon className="icon" />
+              <span>Morgue</span>
+            </li>
+          </Link>
 
           <p className="title">Pharmacie</p>
           <Link to="/identification/patients" style={{ textDecoration: "none" }}>
@@ -84,7 +103,7 @@ const Sidebar = () => {
           </Link>
           <Link to="/products" style={{ textDecoration: "none" }}>
             <li>
-              <SyncAltIcon  className="icon" />
+              <SyncAltIcon className="icon" />
               <span>Mouvement interne</span>
             </li>
           </Link>
@@ -112,27 +131,6 @@ const Sidebar = () => {
               <span>Alerte</span>
             </li>
           </Link>
-
-          <p className="title">Admission</p>
-          <Link to="/identification/patients" style={{ textDecoration: "none" }}>
-            <li>
-              < LocalHotelIcon className="icon" />
-              <span>Hospitalisation</span>
-            </li>
-          </Link>
-          <Link to="/products" style={{ textDecoration: "none" }}>
-            <li>
-              < LocalHospitalIcon className="icon" />
-              <span>Urgence</span>
-            </li>
-          </Link>
-          <Link to="/products" style={{ textDecoration: "none" }}>
-            <li>
-              <AirlineSeatFlatIcon className="icon" />
-              <span>Morgue</span>
-            </li>
-          </Link>
-
 
           <p className="title">Paramétrage</p>
           <li>
