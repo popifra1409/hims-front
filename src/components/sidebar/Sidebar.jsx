@@ -44,6 +44,14 @@ const Sidebar = () => {
               <span>Groupe patient</span>
             </li>
           </Link>
+          <Link to="/products" style={{ textDecoration: "none" }}>
+            <li>
+              <GroupOutlinedIcon className="icon" />
+              <span>Unités fonctionnelles</span>
+            </li>
+          </Link>
+          <p className="title">Admission</p>
+          <p className="title">Pharmacie</p>
           <p className="title">Paramétrage</p>
           <li>
             <LocalHospitalOutlinedIcon className="icon" />

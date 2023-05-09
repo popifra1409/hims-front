@@ -70,20 +70,11 @@ const NewPatient = ({ title }) => {
         return birthDate;
     };
 
-   /*  const handleAgeChange = (e) => {
+    const handleAgeChange = (e) => {
         const patientAge = e.target.value ? parseInt(e.target.value, 10) : '';
         const patientBirthDay = patientAge ? calculateDob(patientAge) : '';
         console.log('affichage age' + patientBirthDay);
-        setValues({ ...values, patientAge, patientBirthDay });
-    }; */
-
-    const handleAgeChange = (value) => {
-        //if (e.target && e.target.value !== undefined) {
-            const patientAge = value ? parseInt(value, 10) : '';
-            const patientBirthDay = patientAge ? calculateDob(patientAge) : '';
-            console.log('affichage age' + patientBirthDay);
-            setValues({ ...values, patientAge, patientBirthDay });
-      //  }
+        setValues({ ...values, patientAge, patientBirthDay }); 
     };
 
     //fin calcul
@@ -152,7 +143,7 @@ const NewPatient = ({ title }) => {
                                                     label="Age du patient"
                                                     type="number"
                                                     value={values.patientAge}
-                                                    onChange={handleChange}
+                                                    onChange={handleAgeChange}
                                                 />
                                             </Grid>
                                             <Grid item xs={4}>
