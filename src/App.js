@@ -1,11 +1,12 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import ListPatients from "./pages/identification/patient/patientlist";
+import ListGroupesPatients from "./pages/identification/groupepatient/groupepatientlist";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
-import { DarkModeContext } from "./context/darkModeContext";  
+import { DarkModeContext } from "./context/darkModeContext";
 import SinglePatient from "./pages/identification/patient/singlePatient";
 import NewPatient from "./pages/identification/patient/newpatient";
 
@@ -40,6 +41,9 @@ function App() {
                 path="update/:patientid"
                 element={<UpdatePatient title="Update Patient" />}
               /> */}
+            </Route>
+            <Route path="groupePatients">
+              <Route index element={<ListGroupesPatients />} />
             </Route>
           </Route>
         </Routes>

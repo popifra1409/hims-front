@@ -49,7 +49,7 @@ const Sidebar = () => {
               <span>Patient</span>
             </li>
           </Link>
-          <Link to="/products" style={{ textDecoration: "none" }}>
+          <Link to="/identification/groupePatients" style={{ textDecoration: "none" }}>
             <li>
               <GroupOutlinedIcon className="icon" />
               <span>Groupe patient</span>
