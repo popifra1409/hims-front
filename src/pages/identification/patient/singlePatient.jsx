@@ -7,6 +7,10 @@ import { useParams } from "react-router-dom";
 import PatientAPI from "../../../services/identification/patientAPI";
 import { Link } from "react-router-dom";
 import { QRCodeSVG } from "qrcode.react";
+import { Card, CardContent, Button, Typography } from '@material-ui/core';
+
+
+
 
 const SinglePatient = () => {
     const { patientid } = useParams();
@@ -122,13 +126,115 @@ const SinglePatient = () => {
                             </div>
                         </div>
                     </div>
+
                     <div className="right">
-                        <h1 className="title">Les dernières factures</h1>
-                        {/* <ListPatients /> */}
+                        <div className="infoSupplementaires" style={{ height: "200px", width: "400px" }}>
+                            <div className="editButton">
+                                <Link
+                                    to={`/identification/patients/update/${patientid}/`}
+                                    style={{ textDecoration: "none" }}
+                                >
+                                    Edit
+                                </Link>
+                            </div>
+
+                            <Typography variant="outlined">
+                                <h5 className="Title" style={{fontWeight:"bold"}}>Informations Supplémentaires:</h5>
+                            </Typography>
+                            <div className="items">
+                                <div className="detailItem">
+                                    <span className="itemKey">Identifiant:</span>
+                                    <span className="itemValue">{patient.telephone}</span>
+                                </div>
+                                <div className="detailItem">
+                                    <span className="itemKey">Information:</span>
+                                    <span className="itemValue">{patient.email}</span>
+                                </div>
+                                <div className="detailItem">
+                                    <span className="itemKey">Valeur:</span>
+                                    <span className="itemValue">{patient.email}</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
                     </div>
+
+
+                    <div className="actionsSupplementaires" style={{ width: "130px" }}>
+
+                        <Button variant="contained" color="secondary" style={{ width: "150px", fontSize: "11px" }}>
+                            Facturer
+                        </Button>
+                        <br />
+                        <br />
+                        <Button variant="contained" color="primary" style={{ width: "150px", fontSize: "11px" }}>
+                            Hospitaliser
+                        </Button>
+                        <br />
+                        <br />
+                        <Button variant="contained" color="success" style={{ width: "150px", fontSize: "11px" }}>
+                            Suivi Medical
+                        </Button>
+                        <br />
+                        <br />
+                        <Button variant="contained" color="primary" style={{ width: "150px", fontSize: "11px" }}>
+                            Paramètres Soins
+                        </Button>
+
+                    </div>
+
+                    {/*rrrrrrrrrrrrrrrrrrr*/}
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nom du patient</th>
+                                    <th>Date de naissance</th>
+                                    <th>Numéro de sécurité sociale</th>
+                                    <th>Montant total</th>
+                                    <th>Date de facturation</th>
+                                    <th>Actions</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hounang</td>
+                                    <td>28-11-1998</td>
+                                    <td>loic6940§788</td>
+                                    <td>50000</td>
+                                    <td>2005</td>
+                                    <td className="actions-cell">
+                                        <button className="btn btn-danger" >Details</button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Akim</td>
+                                    <td>2002-06-30</td>
+                                    <td>loic6940§788</td>
+                                    <td>500000</td>
+                                    <td>2010-10-10</td>
+                                    <td className="actions-cell">
+                                        <button className="btn btn-danger" >Details</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
                 </div>
             </div>
+
+
         </div>
+
+
     );
 };
 
