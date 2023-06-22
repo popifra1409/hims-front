@@ -16,8 +16,11 @@ import Radio from "../../../components/FormsUI/RadioButton";
 import professions from '../../../static/professions.json';
 import nations from '../../../static/pays.json';
 import religions from '../../../static/religions.json';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
 
 const emptyInfoSup = { information: '', valeur: '' };
+const emptyParametreSoin = { libelle: '', unite: '', poids:'' };
 const useStyles = makeStyles(theme => (
     {
         errorColor: {
@@ -50,7 +53,8 @@ const NewPatient = ({ title }) => {
         patientReligion: "",
         patientSex: false,
         telephone: "",
-        infosup: [emptyInfoSup]
+        infosup: [emptyInfoSup],
+        parametreSoin: [emptyParametreSoin]
     };
 
     //options gender
@@ -63,7 +67,7 @@ const NewPatient = ({ title }) => {
     //calcul de la date de naissance
     const [values, setValues] = useState(INITIAL_FORM_STATE);
 
-    const calculateDob = (age) => {
+    /* const calculateDob = (age) => {
         const today = new Date();
         const birthYear = today.getFullYear() - age;
         const birthDate = new Date(birthYear, today.getMonth(), today.getDate());
@@ -74,8 +78,37 @@ const NewPatient = ({ title }) => {
         const patientAge = e.target.value ? parseInt(e.target.value, 10) : '';
         const patientBirthDay = patientAge ? calculateDob(patientAge) : '';
         console.log('affichage age' + patientBirthDay);
-        setValues({ ...values, patientAge, patientBirthDay }); 
+        setValues({ ...values, patientAge, patientBirthDay });
+    };  */
+
+    const [birthdate, setBirthdate] = useState('');
+    const [age, setAge] = useState('');
+
+    const handleBirthdateChange = (event) => {
+        const selectedDate = new Date(event.target.value);
+        setBirthdate(selectedDate.toISOString().slice(0, 10)); // Formatage de la date
+
+        const today = new Date();
+        const selectedYear = selectedDate.getFullYear();
+        const currentYear = today.getFullYear();
+
+        const calculatedAge = currentYear - selectedYear;
+        setAge(calculatedAge.toString());
     };
+
+    const handleAgeChange = (event) => {
+        const inputAge = parseInt(event.target.value);
+        setAge(inputAge.toString());
+
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        const selectedYear = currentYear - inputAge;
+
+        const selectedDate = new Date(selectedYear, 0, 1);
+        setBirthdate(selectedDate.toISOString().slice(0, 10));
+    };
+
+
 
     //fin calcul
 
@@ -112,7 +145,7 @@ const NewPatient = ({ title }) => {
                                     return new Promise(res => setTimeout(res, 2500));
                                 }}
                             >
-                                {({ values, errors, isSubmitting, handleChange }) => (
+                                {({ values, errors, isSubmitting }) => (
                                     <Form autoComplete="off">
                                         <Grid container spacing={2}>
                                             <Grid item xs={12}>
@@ -130,6 +163,7 @@ const NewPatient = ({ title }) => {
                                                 <TextField
                                                     name="patientFirstName"
                                                     label="Prénom(s)"
+                                                    value={values.patientFirstName}
                                                 />
                                             </Grid>
                                             <Grid item xs={4}>
@@ -175,43 +209,130 @@ const NewPatient = ({ title }) => {
                                             <Grid item xs={4}>
                                                 <TextField name="adresse" label="Adresse postale" />
                                             </Grid>
-                                            <FieldArray name="infosup">
-                                                {({ push, remove }) => (
-                                                    <React.Fragment>
-                                                        <Grid item xs={12}>
-                                                            <Typography variant="overline" className={classes.text}>
-                                                                Informations supplémentaires
-                                                            </Typography>
-                                                        </Grid>
-                                                        {values.infosup.map((_, index) => (
-                                                            <Grid container item key={index} spacing={2}>
-                                                                <Grid item xs={12} sm="auto" className={classes.strech}>
-                                                                    <TextField
-                                                                        name={`infosup[${index}].information`}
-                                                                        label="Information"
-                                                                    />
+
+                                            {/* paramètre de soins du patient */}
+
+                                            <Grid item xs={12}>
+                                                <Typography variant="overline" className={classes.text}>
+                                                    Paramètre de soins du patient
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={4}>
+                                                <TextField name="libelle" label="libelle" />
+                                            </Grid>
+                                            <Grid item xs={4}>
+                                                <TextField name="unite" label="Unité" />
+                                            </Grid>
+                                            <Grid item xs={4}>
+                                                <TextField name="Poids" label="Poids" />
+                                            </Grid>
+
+                                            {/* infos supplémentaires du patient */}
+                                            <Card style={{ width: "100%", marginTop: "10px" }}>
+                                                <CardContent >
+                                                    <FieldArray name="infosup">
+                                                        {({ push, remove }) => (
+                                                            <React.Fragment>
+                                                                <Grid item xs={12}>
+                                                                    <Typography variant="overline" className={classes.text}>
+                                                                        Informations supplémentaires
+                                                                    </Typography>
                                                                 </Grid>
-                                                                <Grid item xs={12} sm="auto" className={classes.strech}>
-                                                                    <TextField
-                                                                        name={`infosup[${index}].valeur`}
-                                                                        label="Valeur"
-                                                                    />
+                                                                {values.infosup.map((_, index) => (
+                                                                    <Grid container item key={index} spacing={2}>
+                                                                        <Grid item xs={5} className={classes.strech}>
+                                                                            <TextField
+                                                                                name={`infosup[${index}].information`}
+                                                                                label="Information"
+                                                                            />
+                                                                        </Grid>
+                                                                        <Grid item xs={5} className={classes.strech}>
+                                                                            <TextField
+                                                                                name={`infosup[${index}].valeur`}
+                                                                                label="Valeur"
+                                                                            />
+                                                                        </Grid>
+                                                                        <Grid item xs={1} >
+                                                                            <Button
+                                                                                variant="contained"
+                                                                                color="secondary"
+                                                                                style={{ height: "50px" }}
+                                                                                onClick={() => remove(index)}><DeleteIcon /></Button>
+                                                                        </Grid>
+
+                                                                        <Grid item xs={1}>
+                                                                            <Button
+                                                                                variant="contained"
+                                                                                color="primary"
+                                                                                style={{ color: "white", height: "50px" }}
+                                                                                onClick={() => push(emptyInfoSup)}
+                                                                            ><AddIcon /></Button>
+                                                                        </Grid>
+                                                                    </Grid>
+                                                                ))}
+
+                                                            </React.Fragment>
+                                                        )}
+                                                    </FieldArray>
+                                                </CardContent>
+                                            </Card>
+
+                                            {/* paramètre de soins du patient */}
+                                            <Card style={{ width: "100%", marginTop: '30px' }}>
+                                                <CardContent  >
+                                                    <FieldArray name="parametreSoin">
+                                                        {({ push, remove }) => (
+                                                            <React.Fragment>
+                                                                <Grid item xs={12}>
+                                                                    <Typography variant="overline" className={classes.text}>
+                                                                        Paramètre de Soins du patient
+                                                                    </Typography>
                                                                 </Grid>
-                                                                <Grid item xs={12} sm="auto">
-                                                                    <Button onClick={() => remove(index)}>Supprimer</Button>
-                                                                </Grid>
-                                                            </Grid>
-                                                        ))}
-                                                        <Grid item>
-                                                            <Button
-                                                                variant="contained"
-                                                                onClick={() => push(emptyInfoSup)}
-                                                            >Ajouter info supplémentaire</Button>
-                                                        </Grid>
-                                                    </React.Fragment>
-                                                )}
-                                            </FieldArray>
-                                            <Grid item>
+                                                                {values.parametreSoin.map((_, index) => (
+                                                                    <Grid container item key={index} spacing={2}>
+                                                                        <Grid item xs={3} className={classes.strech}>
+                                                                            <TextField
+                                                                                name={`parametreSoin[${index}].libelle`}
+                                                                                label="Libelle"
+                                                                            />
+                                                                        </Grid>
+                                                                        <Grid item xs={3} className={classes.strech}>
+                                                                            <TextField
+                                                                                name={`parametreSoin[${index}].unite`}
+                                                                                label="Unite"
+                                                                            />
+                                                                        </Grid>
+                                                                        <Grid item xs={4} className={classes.strech}>
+                                                                            <TextField
+                                                                                name={`parametreSoin[${index}].poids`}
+                                                                                label="Poids"
+                                                                            />
+                                                                        </Grid>
+                                                                        <Grid item xs={1} >
+                                                                            <Button variant="contained" color="secondary" style={{ color: "white", height: "50px" }} onClick={() => remove(index)}><DeleteIcon /></Button>
+                                                                        </Grid>
+
+                                                                        <Grid item xs={1}>
+                                                                            <Button
+                                                                                color="primary"
+                                                                                style={{ color: "white", height: "50px" }}
+                                                                                variant="contained"
+                                                                                onClick={() => push(emptyParametreSoin)}
+                                                                            ><AddIcon />
+                                                                            </Button>
+                                                                        </Grid>
+                                                                    </Grid>
+
+
+                                                                ))}
+
+                                                            </React.Fragment>
+                                                        )}
+                                                    </FieldArray>
+                                                </CardContent>
+                                            </Card>
+
+                                            <Grid item style={{ marginTop: '10px' }}>
                                                 <Button
                                                     disabled={isSubmitting}
                                                     type="submit"
@@ -227,6 +348,13 @@ const NewPatient = ({ title }) => {
                                     </Form>
                                 )}
                             </Formik>
+                            <div>
+                                <label>Date de naissance:</label>
+                                <input type="date" value={birthdate} onChange={handleBirthdateChange} />
+                                <br />
+                                <label>Âge:</label>
+                                <input type="text" value={age} onChange={handleAgeChange} />
+                            </div>
                         </CardContent>
                     </Card>
                 </div>
