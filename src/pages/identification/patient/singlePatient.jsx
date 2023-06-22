@@ -7,14 +7,7 @@ import { useParams } from "react-router-dom";
 import PatientAPI from "../../../services/identification/patientAPI";
 import { Link } from "react-router-dom";
 import { QRCodeSVG } from "qrcode.react";
-<<<<<<< HEAD
-import { Card, CardContent, Button, Typography } from '@material-ui/core';
-
-
-
-=======
 import { Card, CardContent, Grid, Button, makeStyles, Typography, Input } from '@material-ui/core';
->>>>>>> f72c99b7b843e45ba03fb8bdc969a93992683acc
 
 const SinglePatient = () => {
     const { patientid } = useParams();
@@ -132,40 +125,6 @@ const SinglePatient = () => {
                     </div>
 
                     <div className="right">
-<<<<<<< HEAD
-                        <div className="infoSupplementaires" style={{ height: "200px", width: "400px" }}>
-                            <div className="editButton">
-                                <Link
-                                    to={`/identification/patients/update/${patientid}/`}
-                                    style={{ textDecoration: "none" }}
-                                >
-                                    Edit
-                                </Link>
-                            </div>
-
-                            <Typography variant="outlined">
-                                <h5 className="Title" style={{fontWeight:"bold"}}>Informations Supplémentaires:</h5>
-                            </Typography>
-                            <div className="items">
-                                <div className="detailItem">
-                                    <span className="itemKey">Identifiant:</span>
-                                    <span className="itemValue">{patient.telephone}</span>
-                                </div>
-                                <div className="detailItem">
-                                    <span className="itemKey">Information:</span>
-                                    <span className="itemValue">{patient.email}</span>
-                                </div>
-                                <div className="detailItem">
-                                    <span className="itemKey">Valeur:</span>
-                                    <span className="itemValue">{patient.email}</span>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
-=======
                         <div className="infoSupplementaires">
                             <Card>
                                 <CardContent>
@@ -199,7 +158,6 @@ const SinglePatient = () => {
                                 </Button>
                              </CardContent>
                         </Card>
->>>>>>> f72c99b7b843e45ba03fb8bdc969a93992683acc
                     </div>
 
 
