@@ -9,6 +9,8 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import SinglePatient from "./pages/identification/patient/singlePatient";
 import NewPatient from "./pages/identification/patient/newpatient";
+import NewGroupePatient from "./pages/identification/groupepatient/newgroupepatient";
+import SingleGroupePatient from "./pages/identification/groupepatient/singleGroupePatient";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -44,6 +46,11 @@ function App() {
             </Route>
             <Route path="groupePatients">
               <Route index element={<ListGroupesPatients />} />
+              <Route path="groupeid" element={<SingleGroupePatient />} />
+              <Route 
+                path="newgroupepatient"
+                element={<NewGroupePatient title="Créer un nouveau groupe" />}
+              />
             </Route>
           </Route>
         </Routes>

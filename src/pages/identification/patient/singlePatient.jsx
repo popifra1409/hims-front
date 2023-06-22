@@ -7,10 +7,14 @@ import { useParams } from "react-router-dom";
 import PatientAPI from "../../../services/identification/patientAPI";
 import { Link } from "react-router-dom";
 import { QRCodeSVG } from "qrcode.react";
+<<<<<<< HEAD
 import { Card, CardContent, Button, Typography } from '@material-ui/core';
 
 
 
+=======
+import { Card, CardContent, Grid, Button, makeStyles, Typography, Input } from '@material-ui/core';
+>>>>>>> f72c99b7b843e45ba03fb8bdc969a93992683acc
 
 const SinglePatient = () => {
     const { patientid } = useParams();
@@ -128,6 +132,7 @@ const SinglePatient = () => {
                     </div>
 
                     <div className="right">
+<<<<<<< HEAD
                         <div className="infoSupplementaires" style={{ height: "200px", width: "400px" }}>
                             <div className="editButton">
                                 <Link
@@ -160,6 +165,41 @@ const SinglePatient = () => {
 
 
 
+=======
+                        <div className="infoSupplementaires">
+                            <Card>
+                                <CardContent>
+                                    <Typography variant="outlined">
+                                        <h1 className="Title" >Informations Supplémentaires</h1>
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </div>
+                    <div className="actionsSupplementaires">
+                            <Card>
+                            <CardContent>
+                                <Button variant="contained" color="secondary">
+                                    Facturer
+                                </Button>
+                                <br />
+                                <br />
+                                <Button variant="contained" color="primary">
+                                    Hospitaliser
+                                </Button>
+                                <br />
+                                <br />
+                                <Button variant="contained" color="success">
+                                    Suivi Medical
+                                </Button>
+                                <br />
+                                <br />
+                                <Button variant="contained" color="primary">
+                                    Paramètres De Soins
+                                </Button>
+                             </CardContent>
+                        </Card>
+>>>>>>> f72c99b7b843e45ba03fb8bdc969a93992683acc
                     </div>
 
 
