@@ -48,7 +48,7 @@ const INITIAL_FORM_STATE = {
     patientSex: false,
     telephone: "",
     infosup: [emptyInfoSup],
-    parametreSoin: [emptyParametreSoin]
+    parametreSoin: ""
 };
 
 const AGE_REGEX = /^(0|[1-9]\d*)$/
@@ -262,65 +262,6 @@ const NewPatient = ({ title }) => {
                                                     </FieldArray>
                                                 </CardContent>
                                             </Card>
-
-                                            {/* paramètre de soins du patient */}
-                                            <Card style={{ width: "100%", marginTop: '30px' }}>
-                                                <CardContent  >
-                                                    <FieldArray name="parametreSoin">
-                                                        {({ push, remove }) => (
-                                                            <React.Fragment>
-                                                                <Grid item xs={12}>
-                                                                    <Typography variant="overline" className={classes.text}>
-                                                                        Paramètre de Soins du patient
-                                                                    </Typography>
-                                                                </Grid>
-                                                                {values.parametreSoin.map((_, index) => (
-                                                                    <Grid container item key={index} spacing={2}>
-                                                                        <Grid item xs={3} className={classes.strech}>
-                                                                            <TextFieldWrapper
-                                                                                name={`parametreSoin[${index}].libelle`}
-                                                                                label="Libelle"
-                                                                            />
-                                                                        </Grid>
-                                                                        <Grid item xs={3} className={classes.strech}>
-                                                                            <TextFieldWrapper
-                                                                                name={`parametreSoin[${index}].unite`}
-                                                                                label="Unite"
-                                                                            />
-                                                                        </Grid>
-                                                                        <Grid item xs={4} className={classes.strech}>
-                                                                            <TextFieldWrapper
-                                                                                name={`parametreSoin[${index}].poids`}
-                                                                                label="Poids"
-                                                                            />
-                                                                        </Grid>
-                                                                        <Grid item xs={2} >
-                                                                            <IconButton
-                                                                                aria-label="supprimer"
-                                                                                size="small"
-                                                                                variant="outlined"
-                                                                                onClick={() => remove(index)}
-                                                                            >
-                                                                                <DeleteIcon />
-                                                                            </IconButton>
-                                                                            <IconButton
-                                                                                aria-label="ajouter"
-                                                                                size="small"
-                                                                                variant="outlined"
-                                                                                onClick={() => push(emptyParametreSoin)}
-                                                                            >
-                                                                                <AddIcon />
-                                                                            </IconButton>
-                                                                        </Grid>
-                                                                    </Grid>
-                                                                ))}
-
-                                                            </React.Fragment>
-                                                        )}
-                                                    </FieldArray>
-                                                </CardContent>
-                                            </Card>
-
                                             <Grid item style={{ marginTop: '10px' }}>
                                                 <Button
                                                     disabled={isSubmitting}
@@ -337,13 +278,6 @@ const NewPatient = ({ title }) => {
                                     </Form>
                                 )}
                             </Formik>
-                            {/* <div>
-                                <label>Date de naissance:</label>
-                                <input type="date" value={birthdate} onChange={handleBirthdateChange} />
-                                <br />
-                                <label>Âge:</label>
-                                <input type="text" value={age} onChange={handleAgeChange} />
-                            </div> */}
                         </CardContent>
                     </Card>
                 </div>
