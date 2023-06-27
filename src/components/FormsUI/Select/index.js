@@ -19,7 +19,7 @@ const SelectWrapper = ({
         ...field,
         ...otherProps,
         select: true,
-        variant: 'outlined',
+        variant: 'standard',
         fullWidth: true,
         onChange: handleChange
     }

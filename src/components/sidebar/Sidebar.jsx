@@ -1,6 +1,6 @@
 import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
@@ -115,7 +115,7 @@ const Sidebar = () => {
               <>
                 <Link to="/identification/patients" style={{ textDecoration: "none" }}>
                   <li>
-                    < PersonOutlineIcon className="icon" />
+                    < PersonOutlinedIcon className="icon" />
                     <span>Patient</span>
                   </li>
                 </Link>

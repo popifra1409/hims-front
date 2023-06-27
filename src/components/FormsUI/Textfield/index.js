@@ -1,57 +1,32 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
-import { useField, useFormik } from "formik";
+import { useField, useFormikContext } from "formik";
 
-const TextFieldWrapper = ({
-    name,
-    value,
-    onChange,
-    ...otherProps
-}) => {
-    const formik = useFormik({
-         initialValues: {
-             [name]: value,
-         },
-         /* onChange: (event) => {
-             formik.setFieldValue(name, event.target.value);
-             if (onChange) {
-                 onChange(event.target.value);
-             }
-         },
-         ...otherProps, */
-     });
- 
-     const handleChange = (event) => {
-         formik.setFieldValue(name, event.target.value);
-         if (onChange) {
-             onChange(event.target.value);
-         }
-     };
-    
-     /* const { setFieldValue } = useFormikContext();
-
-    const handleChange = evt => {
-        const { value } = evt.target;
-        setFieldValue(name, value)
-    }
- */
+const TextFieldWrapper = ({ name, ...otherProps }) => {
+    const { setFieldValue } = useFormikContext();
     const [field, meta] = useField(name);
-    //default config
-    const configTextfield = {
+
+  /*  const handleChange = (event) => {
+        const { value } = event.target;
+        setFieldValue(name, value);
+    }; */
+
+    const configTextField = {
         ...field,
         ...otherProps,
         fullWidth: true,
-        variant: 'outlined',
-        onChange: handleChange
+        variant: 'standard',
+       /*  onChange: handleChange  */
     };
 
     if (meta && meta.touched && meta.error) {
-        configTextfield.error = true;
-        configTextfield.helperText = meta.error;
+        configTextField.error = true;
+        configTextField.helperText = meta.error;
     }
 
     return (
-        <TextField {...configTextfield} />
-    )
-}
+        <TextField {...configTextField} />
+    );
+};
+
 export default TextFieldWrapper;

@@ -1,32 +1,37 @@
 import React from "react";
-import { TextField } from "@material-ui/core";
-import { useField } from "formik";
+import { KeyboardDatePicker } from "@material-ui/pickers";
+import { useField, useFormikContext } from "formik";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import { format } from 'date-fns'
 
-const DateTimePicker = ({
-    name,
-    ...otherProps
-}) => {
+const DateTimePickerWrapper = ({ name, ...otherProps }) => {
+    const { setFieldValue } = useFormikContext();
+    const [field] = useField(name);
 
-    const [field, meta] = useField(name);
+    const handleChange = (date) => {
+        setFieldValue(name, date);
+    };
+
+    const formatDate = (date) => {
+        return format(date, "MM/dd/yyyy");
+    };
 
     const configDateTimePicker = {
         ...field,
         ...otherProps,
-        type: 'date',
-        variant: 'outlined',
+        format: "dd/MM/yyyy",
+        value: field.value ? formatDate(field.value) : null,
         fullWidth: true,
-        InputLabelProps: {
-            shrink: true
-        }
-    }
-
-    if (meta && meta.touched && meta.error) {
-        configDateTimePicker.error = true;
-        configDateTimePicker.helperText = meta.error;
-    }
+        inputVariant: "standard",
+        onChange: handleChange,
+    };
 
     return (
-        <TextField  {...configDateTimePicker} />
-    )
-}
-export default DateTimePicker;
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker {...configDateTimePicker} />
+        </MuiPickersUtilsProvider>
+    );
+};
+
+export default DateTimePickerWrapper;

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { patientColumns } from "../../../pages/identification/patient/PatientTableSource";
 import PatientAPI from "../../../services/identification/patientAPI";
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import ContentPasteSearchOutlinedIcon from '@mui/icons-material/ContentPasteSearchOutlined';
 
 
 const PatientDatatable = () => {
@@ -29,11 +31,11 @@ const PatientDatatable = () => {
           <div className="cellAction">
 
             <Link to={`/identification/patients/${params.id}`} style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
+              <div className="viewButton"><ContentPasteSearchOutlinedIcon className="icon" tooltip="détail" /></div>
             </Link>
             <div
             >
-              <button className="deleteButton"  > Delete </button>
+              <button className="deleteButton"><DeleteOutlinedIcon className="icon" /></button>
             </div>
           </div>
         );
@@ -47,7 +49,7 @@ const PatientDatatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         GESTION DU PATIENT
-        <Link to="/identification/patients/newpatient"  className="link">
+        <Link to="/identification/patients/newpatient" className="link">
           Nouveau
         </Link>
       </div>
