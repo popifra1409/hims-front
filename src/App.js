@@ -11,6 +11,7 @@ import SinglePatient from "./pages/identification/patient/singlePatient";
 import NewPatient from "./pages/identification/patient/newpatient";
 import NewGroupePatient from "./pages/identification/groupepatient/newgroupepatient";
 import SingleGroupePatient from "./pages/identification/groupepatient/singleGroupePatient";
+import UpdatePatient from "./pages/identification/patient/updatepatient";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -39,10 +40,10 @@ function App() {
                 path="newpatient"
                 element={<NewPatient title="Nouveau Patient" />}
               />
-              {/* <Route
-                path="update/:patientid"
+               <Route
+                path="updatepatient/:patientid"
                 element={<UpdatePatient title="Update Patient" />}
-              /> */}
+              /> 
             </Route>
             <Route path="groupePatients">
               <Route index element={<ListGroupesPatients />} />

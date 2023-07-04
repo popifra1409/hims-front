@@ -9,6 +9,7 @@ import ContentPasteSearchOutlinedIcon from '@mui/icons-material/ContentPasteSear
 
 
 const PatientDatatable = () => {
+
   const [pageSize, setPageSize] = useState(10);
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,6 +21,16 @@ const PatientDatatable = () => {
     });
     setLoading(false);
   }, []);
+  
+  const deletePatient = async (patientId) => {
+    try {
+      const response = await PatientAPI.deletePatients(patientId);
+      return response.data.data;
+    } catch (error) {
+      console.error(error);
+      throw new Error("Une erreur s'est produite lors de la suppression du patient.");
+    }
+  };
 
   const actionColumn = [
     {
@@ -35,7 +46,7 @@ const PatientDatatable = () => {
             </Link>
             <div
             >
-              <button className="deleteButton"><DeleteOutlinedIcon className="icon" /></button>
+              <button className="deleteButton" onClick={() => deletePatient(params.id)}><DeleteOutlinedIcon className="icon" /></button>
             </div>
           </div>
         );

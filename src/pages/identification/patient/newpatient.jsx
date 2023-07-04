@@ -2,9 +2,9 @@ import "../../new/new.scss";
 import "../../../style/dark.scss";
 import Sidebar from '../../../components/sidebar/Sidebar';
 import Navbar from '../../../components/navbar/Navbar';
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Card, CardContent, Grid, IconButton, Button, makeStyles, Typography } from '@material-ui/core';
-import { Form, Formik, FieldArray, useFormikContext } from 'formik';
+import { Form, Formik, FieldArray } from 'formik';
 import { CircularProgress } from "@mui/material";
 import * as Yup from "yup";
 import TextFieldWrapper from "../../../components/FormsUI/Textfield";
@@ -15,10 +15,12 @@ import nations from '../../../static/pays.json';
 import religions from '../../../static/religions.json';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import * as moment from 'moment';
+import PatientAPI from "../../../services/identification/patientAPI";
+import { useNavigate } from 'react-router-dom';
 
-const emptyInfoSup = { information: '', valeur: '' };
-const emptyParametreSoin = { libelle: '', unite: '', poids: '' };
+
+const emptyInfoSup = { cle: '', valeur: '' };
+
 const useStyles = makeStyles(theme => (
     {
         errorColor: {
@@ -47,7 +49,7 @@ const INITIAL_FORM_STATE = {
     patientReligion: "",
     patientSex: false,
     telephone: "",
-    infosup: [emptyInfoSup],
+    infosSup: [emptyInfoSup],
     parametreSoin: ""
 };
 
@@ -75,19 +77,26 @@ const calculateAgeFromDate = (birthdate) => {
     return age.toString();
 };
 
-//evaluer la date de naissance à partrir de l'age fourni
+//evaluer la date de naissance à partir de l'age fournir
 const calculateBirthdateFromAge = (age) => {
     const today = new Date();
     const birthDate = new Date(today.getFullYear() - age, today.getMonth(), today.getDate());
     return birthDate.toISOString().split("T")[0];
-};
+    
+}; 
 
-const NewPatient = ({ title }) => {
+
+  
+
+const NewPatient = ({ title}) => {
+   
+    let Navigate = useNavigate();
 
     const classes = useStyles();
 
     const [birthDate, setBirthdate] = useState("");
     const [age, setAge] = useState("");
+
 
     //options gender
     const genre = [
@@ -108,9 +117,16 @@ const NewPatient = ({ title }) => {
          setFieldValue("patientBirthDate", birthDate);
      };
   */
-    const handleSubmit = (values) => {
-        console.log(values);
-    };
+    const handleSubmit = async (values) => {
+        await PatientAPI.addPatient(values).then((response) => {
+            console.log("Data" + response.data.data);
+            Navigate("/identification/patients");
+        })
+    };  
+   
+    
+   
+      
 
     return (
         <div className="new">
@@ -128,8 +144,8 @@ const NewPatient = ({ title }) => {
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={handleSubmit}
                             >
-                                {({ values, errors, isSubmitting, setFieldValue }) => (
-                                    <Form autoComplete="off">
+                                {({ values, errors, isSubmitting, setFieldValue, handleSubmit }) => (
+                                    <Form autoComplete="off" onSubmit={handleSubmit}>
                                         <Grid container spacing={2}>
                                             <Grid item xs={12}>
                                                 <Typography variant="overline" className={classes.text}>
@@ -138,8 +154,9 @@ const NewPatient = ({ title }) => {
                                             </Grid>
                                             <Grid item xs={4} className={classes.strech}>
                                                 <TextFieldWrapper
-                                                    name="patientLastName"
+                                                    name="patientFirstName"
                                                     label="Nom(s)"
+                                                    value={values.patientFirstName}
                                                 />
                                             </Grid>
                                             <Grid item xs={4}>
@@ -149,12 +166,14 @@ const NewPatient = ({ title }) => {
                                                     label="Date de naissance"
                                                     value={birthDate}
                                                     onChange={(event) => {
-                                                        const selectedDate = new Date(event.target.value);
-                                                        setBirthdate(selectedDate.toISOString().slice(0, 10));
-                                                        setFieldValue('patientBirthDay', selectedDate.toISOString().slice(0, 10));
-                                                        const calculatedAge = calculateAgeFromDate(selectedDate.toISOString().slice(0, 10))
-                                                        setFieldValue('patientAge', calculatedAge)
-                                                        setAge(calculatedAge)
+                                                           const selectedDate = new Date(event.target.value);
+                                                          setBirthdate(selectedDate.toISOString());
+                                                          setFieldValue('patientBirthDay', selectedDate.toISOString());
+                                                          const calculatedAge = calculateAgeFromDate(selectedDate.toISOString());
+                                                          setFieldValue('patientAge', calculatedAge);
+                                                          setAge(calculatedAge); 
+                                                       
+
                                                     }}
                                                     InputLabelProps={{
                                                         shrink: true,
@@ -175,26 +194,26 @@ const NewPatient = ({ title }) => {
                                                 />
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <SelectWrapper name="patientProfession" label="Profession" options={professions} />
+                                                <SelectWrapper name="patientProfession" label="Profession" options={professions} value={values.patientProfession} />
                                             </Grid>
                                             <Grid item xs={4} className={classes.strech}>
                                                 <TextFieldWrapper
-                                                    name="patientFirstName"
+                                                    name="patientLastName"
                                                     label="Prénom(s)"
-                                                    value={values.patientFirstName}
+                                                    value={values.patientLastName}
                                                 />
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <TextFieldWrapper name="patientPlaceOfBirth" label="Lieu de naissance" />
+                                                <TextFieldWrapper name="patientPlaceOfBirth" label="Lieu de naissance" value={values.patientPlaceOfBirth} />
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <SelectWrapper name="patientNationalite" label="Nationalité" options={nations} />
+                                                <SelectWrapper name="patientNationalite" label="Nationalité" options={nations} value={values.patientNationalite} />
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <RadioSelectWrapper label="Genre" name="patientSex" options={genre} />
+                                                <RadioSelectWrapper label="Genre" name="patientSex" options={genre} value={values.patientSex} />
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <SelectWrapper name="patientReligion" label="Religion" options={religions} />
+                                                <SelectWrapper name="patientReligion" label="Religion" options={religions} value={values.patientReligion} />
                                             </Grid>
                                             <Grid item xs={12}>
                                                 <Typography variant="overline" className={classes.text}>
@@ -202,19 +221,19 @@ const NewPatient = ({ title }) => {
                                                 </Typography>
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <TextFieldWrapper name="telephone" label="Contact (N° Téléphone)" />
+                                                <TextFieldWrapper name="telephone" label="Contact (N° Téléphone)" value={values.telephone} />
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <TextFieldWrapper name="email" label="Adresse électronique" />
+                                                <TextFieldWrapper name="email" label="Adresse électronique" value={values.email} />
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <TextFieldWrapper name="adresse" label="Adresse postale" />
+                                                <TextFieldWrapper name="adresse" label="Adresse postale" value={values.adresse} />
                                             </Grid>
 
                                             {/* infos supplémentaires du patient */}
                                             <Card style={{ width: "100%", marginTop: "10px" }}>
                                                 <CardContent >
-                                                    <FieldArray name="infosup">
+                                                    <FieldArray name="infosSup">
                                                         {({ push, remove }) => (
                                                             <React.Fragment>
                                                                 <Grid item xs={12}>
@@ -222,18 +241,20 @@ const NewPatient = ({ title }) => {
                                                                         Informations supplémentaires
                                                                     </Typography>
                                                                 </Grid>
-                                                                {values.infosup.map((_, index) => (
+                                                                {values.infosSup.map((_, index) => (
                                                                     <Grid container item key={index} spacing={2}>
                                                                         <Grid item xs={5} className={classes.strech}>
                                                                             <TextFieldWrapper
-                                                                                name={`infosup[${index}].information`}
+                                                                                name={`infosSup[${index}].cle`}
                                                                                 label="Information"
+                                                                                value={values.infosSup[index].cle}
                                                                             />
                                                                         </Grid>
                                                                         <Grid item xs={5} className={classes.strech}>
                                                                             <TextFieldWrapper
-                                                                                name={`infosup[${index}].valeur`}
+                                                                                name={`infosSup[${index}].valeur`}
                                                                                 label="Valeur"
+                                                                                value={values.infosSup[index].valeur}
                                                                             />
                                                                         </Grid>
                                                                         <Grid item xs={2} >

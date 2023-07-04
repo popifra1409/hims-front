@@ -63,7 +63,7 @@ const SinglePatient = () => {
                     <div className="left">
                         <div className="editButton">
                             <Link
-                                to={`/identification/patients/update/${patientid}/`}
+                                to={`/identification/patients/updatepatient/${patientid}/`}
                                 style={{ textDecoration: "none" }}
                             >
                                 Edit
